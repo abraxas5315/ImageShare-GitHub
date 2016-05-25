@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
+<%@ page import="db.FollowDAO"%>
+<%@ page import="data.Member"%>
 
 
 <%
@@ -32,17 +34,14 @@
 			<form name="form1" method="post" action="<%= path %>">
 			<h1>ÉtÉHÉçÅ[</h1>
 				<table  cellspacing=1 cellpadding=20>
-				<%for(Member member : member){%>
-				<tr>	<td><%=member.getIcon %></td>
-						<td><%=member.getName %><br><%=member.getProfile %></td>
-						<td><%=member.getAccountId %></td>
+				<%for(Member member : follow){%>
+				<tr>	<td><%=member.getIcon() %></td>
+						<td><%=member.getName() %><br><%=member.getProfile() %></td>
+						<td><%=member.getAccountId() %></td>
 						</tr><%} %>
 
 				</table>
-
 			</form>
-
 		</div>
-
 	</body>
 </html>
