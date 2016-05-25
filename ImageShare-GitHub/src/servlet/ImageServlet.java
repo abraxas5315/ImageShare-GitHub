@@ -21,16 +21,19 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+
 /**
  * Servlet implementation class ImageServlet
  */
 @WebServlet("/image")
+@MultipartConfig()
 public class ImageServlet extends MainServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -41,74 +44,61 @@ public class ImageServlet extends MainServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-	protected void doMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    protected void doMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ImageFileStorage storage = new ImageFileStorage();
-		try
-		{
+//		try
+//		{
 			File imgFile = null;
+			Part p = request.getPart("filename");
+			String cType = p.getContentType();
 
-			// マルチパートデータの取得
-			for(Part p : request.getParts())
-			{
-				System.out.println(clipUploadFileName(p));
-//				out.println("ContentType: " + p.getContentType());
-//				out.println("Name: " + p.getName());
-//				out.println("Size: " + p.getSize());
+			// ファイルサイズの取得
+			long size = p.getSize();
+			System.out.println("size: " + size);
 
-				String cType = p.getContentType();
-				if(cType != null && cType.indexOf("image") != -1)
-				{
-					// 画像ファイルの取得
-					BufferedImage image = null;
-					try
-					{
-						image = ImageIO.read(p.getInputStream());
-					}
-					catch(IOException ex)
-					{
-						// 仮のイメージ
-						image = new BufferedImage(300, 200, BufferedImage.TYPE_INT_RGB);
-					}
-
-					/*
-					 * フィルタ処理＆画像保存
-					 */
-					ImageEditor[] editors1 = new ImageEditor[]
-							{
-							new GrayScale(),
-							new Mosaic(),
-							new MonochromeEffect(),
-							new NoneFilter()
-							};
-					 image = editor(request, "base", editors1, image);
-					ImageEditor[] editors2 = new ImageEditor[]
-							{
-							new CircleClipper(),
-							new ImageOverlay(request, createOverlays()),
-							new TextOnImage(),
-							new GradationEffect(),
-							new ImageScaling(),
-							new NoneFilter(),
-							};
-					image = editor(request, "filter", editors2, image);
-					imgFile = storage.store
-					(
-						getServletContext(), cType, image
-					);
-				}
-				request.setAttribute("dstImage", imgFile);
-			    RequestDispatcher rd = request.getRequestDispatcher("Post.jsp");
-			    rd.forward(request, response);
+			// 画像ファイルの取得
+			BufferedImage image = null;
+			try{
+				image = ImageIO.read(p.getInputStream());
+			}catch(IOException ex){
+				// 仮のイメージ
+				image = new BufferedImage(300, 200, BufferedImage.TYPE_INT_RGB);
 			}
 
+			/*
+			 * フィルタ処理＆画像保存
+			*/
+			ImageEditor[] editors1 = new ImageEditor[]
+				{
+					new GrayScale(),
+					new Mosaic(),
+					new MonochromeEffect(),
+					new NoneFilter()
+				};
+			// image = editor(request, "base", editors1, image);
+			ImageEditor[] editors2 = new ImageEditor[]
+				{
+					new CircleClipper(),
+					//new ImageOverlay(request, createOverlays()),
+					new TextOnImage(),
+					new GradationEffect(),
+					new ImageScaling(),
+					new NoneFilter(),
+				};
+			image = editor(request, "filter", editors2, image);
+			imgFile = storage.store(getServletContext(), cType, image);
+			request.setAttribute("dstImage", imgFile);
+			RequestDispatcher rd = request.getRequestDispatcher("Post.jsp");
+			rd.forward(request, response);
 			// HTML書き出し
-		}
-		catch(IllegalStateException ex)
-		//catch(FileUploadBase.FileSizeLimitExceededException ex)
-		{
-			ex.printStackTrace();
-		}
+//		}
+//		catch(IllegalStateException ex)
+//		//catch(FileUploadBase.FileSizeLimitExceededException ex)
+//		{
+//			ex.printStackTrace();
+//		}
 	}
 	private BufferedImage editor
 	(
