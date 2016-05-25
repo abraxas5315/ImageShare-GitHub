@@ -64,7 +64,7 @@ public class AuthenticationServlet extends MainServlet {
 
 		if(member != null)
 		{
-			url = "personal.jsp";
+			url = "personal";
 		}
 		else
 		{
