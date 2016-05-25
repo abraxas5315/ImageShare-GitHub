@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.PostsDAO;
 import data.Article;
 import data.Member;
+import db.PostsDAO;
 
 /**
  * Servlet implementation class Post
