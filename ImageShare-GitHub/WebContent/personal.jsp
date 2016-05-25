@@ -6,7 +6,7 @@
 <%
 PersonalData personal =  (PersonalData) request.getAttribute("personalData");
 Member member = (Member) session.getAttribute("member");
-List<Article> la = (ArrayList<Article>) request.getAttribute("list.article");
+List<Article> listArticle = (ArrayList<Article>) request.getAttribute("list.article");
 
 %>
 
@@ -42,13 +42,18 @@ List<Article> la = (ArrayList<Article>) request.getAttribute("list.article");
 
 		<p> <%=member.getProfile() %></p>
 
+		<%for(int i=0; i<listArticle.size(); i++){
+		Article la = listArticle.get(i);
+		%>
+
+
 		<table class="time-line">
 			<tr>
-				<td> ニックネーム <%=la.get(0).getName() %></td>
+				<td> ニックネーム <%=la.getName() %></td>
 			</tr>
 			<tr>
-				<td> ユーザID <%=la.get(0).getAccountId() %></td>
-				<td> タイムスタンプ<%=la.get(0).getDate() %></td>
+				<td> ユーザID <%=la.getAccountId() %></td>
+				<td> タイムスタンプ<%=la.getDate() %></td>
 			</tr>
 			<tr>
 				<td class="tl-image">
@@ -57,11 +62,15 @@ List<Article> la = (ArrayList<Article>) request.getAttribute("list.article");
 			</tr>
 			<tr>
 				<td class="coment">
-					<%=la.get(0).getText() %>
+					<%=la.getText() %>
 				</td>
 			</tr>
 
 		</table>
+
+		<%
+		}
+		%>
 
 
 	</div>
