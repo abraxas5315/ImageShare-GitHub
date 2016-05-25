@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -97,6 +98,8 @@ public class ImageServlet extends MainServlet {
 					);
 				}
 				request.setAttribute("dstImage", imgFile);
+			    RequestDispatcher rd = request.getRequestDispatcher("post.jsp");
+			    rd.forward(request, response);
 			}
 
 			// HTML書き出し
