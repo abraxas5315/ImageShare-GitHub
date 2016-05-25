@@ -56,15 +56,20 @@ public class PersonalDataDAO {
 
 			// SQL実行結果を格納する
 			if (res.next()) {
-				// フォロー数の格納
-				follows = Integer.parseInt(res.getString("personal"));
-				res.next();
-				// フォロワー数の格納
-				followers = Integer.parseInt(res.getString("personal"));
-				res.next();
-				// 投稿数の格納
-				articles = Integer.parseInt(res.getString("personal"));
 
+				try{
+					// フォロー数の格納
+					follows = Integer.parseInt(res.getString("personal"));
+					res.next();
+					// フォロワー数の格納
+					followers = Integer.parseInt(res.getString("personal"));
+					res.next();
+					// 投稿数の格納
+					articles = Integer.parseInt(res.getString("personal"));
+				} catch (SQLException e) {
+					// 何も処理しない
+
+				}
 			}
 
 			// PersonalDataクラスのコンストラクタに渡す
@@ -93,7 +98,7 @@ public class PersonalDataDAO {
 			String imageUrl = "";
 			Timestamp date = null;
 			// SQL実行結果を格納する
-			if (res.next()) {
+			while (res.next()) {
 				// フォロー数の格納
 				imageUrl = res.getString("image_url");
 				text = res.getString("text");
