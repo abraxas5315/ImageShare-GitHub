@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像編集 - グレースケール化
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class GrayScale implements ImageEditor
 {

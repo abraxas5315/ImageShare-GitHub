@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像のスケーリングエディタ
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class ImageScaling implements ImageEditor
 {

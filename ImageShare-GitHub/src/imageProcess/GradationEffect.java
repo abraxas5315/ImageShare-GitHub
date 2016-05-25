@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * グラデーション効果を付けるエディタ
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class GradationEffect implements ImageEditor
 {

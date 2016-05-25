@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像を重ねるエディタ
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class ImageOverlay implements ImageEditor
 {

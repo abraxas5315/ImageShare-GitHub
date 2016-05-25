@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像編集 - モザイク
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class Mosaic implements ImageEditor
 {

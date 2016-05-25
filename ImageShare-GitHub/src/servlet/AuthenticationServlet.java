@@ -1,4 +1,8 @@
-package sevlet;
+/*
+ * 総合１ 雛形	LoginManagementServlet.java
+ *
+ */
+package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;

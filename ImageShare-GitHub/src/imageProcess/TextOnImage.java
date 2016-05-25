@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像に文字列を描画するエディタ
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class TextOnImage implements ImageEditor
 {

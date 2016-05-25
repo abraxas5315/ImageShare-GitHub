@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像編集 - 単色化効果
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class MonochromeEffect implements ImageEditor
 {

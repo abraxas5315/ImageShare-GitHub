@@ -4,7 +4,11 @@ import java.awt.image.BufferedImage;
 
 import javax.servlet.http.HttpServletRequest;
 
-
+/**
+ * 円形切り取り
+ * @author s.kawashima
+ *
+ */
 public class CircleClipper implements ImageEditor
 {
 	/** フィルタ値 */

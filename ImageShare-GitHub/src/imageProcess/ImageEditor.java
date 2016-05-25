@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像編集用インターフェース
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public interface ImageEditor
 {
