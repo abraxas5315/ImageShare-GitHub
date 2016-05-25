@@ -10,7 +10,7 @@ import data.Member;
 
 
 /**
- *
+ *フォロー一覧DAO
  * @author N.Tsukazawa
  *
  */
@@ -49,7 +49,7 @@ public class FollowDAO {
 
 			// SQLに関する例外処理
 			} catch (SQLException e) {
-				System.out.println("処理結果：異常が発生しました。");
+				System.out.println("フォローしている人はいません。");
 				e.printStackTrace();
 			}
 		return follow;

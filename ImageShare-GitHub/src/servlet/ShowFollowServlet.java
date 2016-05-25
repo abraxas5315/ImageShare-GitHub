@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,15 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import data.Member;
+import db.AccountDAO;
 import db.DataSourceSupplier;
+import db.FollowDAO;
 
 /**
- * Servlet implementation class ShowFollowServlet
+ * フォロー一覧サーブレット
  * @author N.Tsukazawa
  *
  */
 @WebServlet("/ShowFollowServlet")
-public class ShowFollowServlet extends HttpServlet {
+public class ShowFollowServlet extends MainServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
@@ -31,14 +36,47 @@ public class ShowFollowServlet extends HttpServlet {
     }
 
 	/**
+	 * @throws IOException
+	 * @throws ServletException
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     void doMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// セッションの取得
     	HttpSession session = request.getSession();
 
-    	// 値を取得
-    	String action = request.getParameter("timeline");
+		// ------------デバッグ用ログインセッション---------------
+		Member member = null;
+		try {
+			String userID = "aaaa";
+			String password = "aaaaaaaa";
+			member = new AccountDAO().authentication(userID, password);
+		session.setAttribute("member", member);
+		} catch (SQLException e) {
+			System.out.println("データベース関連エラー");
+
+		}
+
+		// --------------デバッグ用ログインセッションここまで------------
+
+    	// DAOをインスタンス化
+    	FollowDAO dao = new FollowDAO();
+
+
+    	ArrayList<Member> follow = new ArrayList<Member>();
+
+
+    	try {
+    		 follow = dao.selectFollow(member);
+
+    			} catch (Exception e) {
+    				// TODO 自動生成された catch ブロック
+    				e.printStackTrace();
+    			}
+
+    	request.setAttribute("follow", follow);
+
+    	//Member member = (Member) session.getAttribute("member");
+
 
     	// 移譲先のjspを格納する変数
     	String url = "followList.jsp";
