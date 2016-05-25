@@ -2,7 +2,7 @@
  * 総合１ 雛形	LoginManagementServlet.java
  *
  */
-package sevlet;
+package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
