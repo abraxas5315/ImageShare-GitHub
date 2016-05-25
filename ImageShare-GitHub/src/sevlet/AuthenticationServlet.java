@@ -1,7 +1,3 @@
-/*
- * 総合１ 雛形	LoginManagementServlet.java
- *
- */
 package sevlet;
 
 import java.io.IOException;
@@ -22,6 +18,11 @@ import db.AccountDAO;
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/authentication")
+/**
+ * ログイン認証用サーブレット
+ * @author s.kawashima
+ *
+ */
 public class AuthenticationServlet extends MainServlet {
 	private static final long serialVersionUID = 1L;
 
