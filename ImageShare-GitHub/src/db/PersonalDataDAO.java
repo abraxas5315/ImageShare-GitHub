@@ -93,7 +93,7 @@ public class PersonalDataDAO {
 			String imageUrl = "";
 			Timestamp date = null;
 			// SQL実行結果を格納する
-			if (res.next()) {
+			while (res.next()) {
 				// フォロー数の格納
 				imageUrl = res.getString("image_url");
 				text = res.getString("text");
