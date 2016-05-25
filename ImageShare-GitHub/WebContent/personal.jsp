@@ -46,27 +46,41 @@ List<Article> listArticle = (ArrayList<Article>) request.getAttribute("list.arti
 		Article la = listArticle.get(i);
 		%>
 
+			<div class="content">
 
-		<table class="time-line">
-			<tr>
-				<td> ニックネーム <%=la.getName() %></td>
-			</tr>
-			<tr>
-				<td> ユーザID <%=la.getAccountId() %></td>
-				<td> タイムスタンプ<%=la.getDate() %></td>
-			</tr>
-			<tr>
-				<td class="tl-image">
-					<img border="0" src="images/Desert.jpg" width="500" height="500" alt="イラスト1">
-				</td>
-			</tr>
-			<tr>
-				<td class="coment">
+				<div class="icon">
+					<img border="0" src="images/Desert.jpg" width="80" height="80" alt="イラスト1">
+				</div>
+
+				<a class="link" href="./userid">
+					<span class="name">
+				 		ニックネーム <%=la.getName() %>
+					</span>
+
+					<strong class="user-id">
+						ユーザID <%=la.getAccountId() %>
+					</strong>
+
+				</a>
+
+				<div>
+
 					<%=la.getText() %>
-				</td>
-			</tr>
 
-		</table>
+				</div>
+
+				<div>
+
+					タイムスタンプ<%=la.getDate() %>
+				</div>
+				<div>
+
+					<img border="0" src="images/Desert.jpg" width="500" height="500" alt="イラスト1">
+
+				</div>
+			</div>
+
+			<hr>
 
 		<%
 		}
