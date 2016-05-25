@@ -48,7 +48,7 @@ public class Mosaic implements ImageEditor
 		_length = length;
 	}
 	@Override
-	public BufferedImage edit(BufferedImage srcImage , HttpServletRequest request)
+	public BufferedImage edit(HttpServletRequest request , BufferedImage srcImage)
 	{
 		//モザイク１つの大きさ（ピクセル）を設定
 		String sLength = request.getParameter(PARAM_NAME_MOSAIC_LENGTH);

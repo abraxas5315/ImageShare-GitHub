@@ -15,7 +15,7 @@ public class NoneFilter implements ImageEditor
 	public static final String FILTER_VALUE = "filter.none";
 
 	@Override
-	public BufferedImage edit(BufferedImage srcImage, HttpServletRequest request)
+	public BufferedImage edit(HttpServletRequest request , BufferedImage srcImage)
 	{
 		//何もせずそのまま返す
 		return srcImage;
