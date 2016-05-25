@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像のスケーリングエディタ
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class ImageScaling implements ImageEditor
 {
@@ -44,7 +44,7 @@ public class ImageScaling implements ImageEditor
 	}
 
 	@Override
-	public BufferedImage edit(BufferedImage srcImage , HttpServletRequest request)
+	public BufferedImage edit(HttpServletRequest request , BufferedImage srcImage)
 	{
 		/*
 		 * 縦横サイズの決定

@@ -14,6 +14,11 @@ import db.DataSourceSupplier;
  * Servlet implementation class MainServlet
  */
 @WebServlet("/main")
+/**
+ * 共通処理用
+ * @author s.kawashima
+ *
+ */
 public abstract class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

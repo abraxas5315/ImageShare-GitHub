@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * グラデーション効果を付けるエディタ
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class GradationEffect implements ImageEditor
 {
@@ -43,7 +43,7 @@ public class GradationEffect implements ImageEditor
 	}
 
 	@Override
-	public BufferedImage edit(BufferedImage srcImage , HttpServletRequest request)
+	public BufferedImage edit(HttpServletRequest request , BufferedImage srcImage)
 	{
 
 		String color = request.getParameter(PARAM_NAME_GRADATION_COLOR);
@@ -77,7 +77,7 @@ public class GradationEffect implements ImageEditor
 
 		// 元画像にグラデーション画像を重ねる
 		ImageOverlay overlay = new ImageOverlay(imgOverlay, true);
-		BufferedImage dstImage = overlay.edit(srcImage , request);
+		BufferedImage dstImage = overlay.edit(request , srcImage);
 
 		return dstImage;
 	}

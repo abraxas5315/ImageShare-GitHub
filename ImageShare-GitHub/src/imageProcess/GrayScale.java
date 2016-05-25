@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像編集 - グレースケール化
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class GrayScale implements ImageEditor
 {
@@ -17,7 +17,7 @@ public class GrayScale implements ImageEditor
 
 
 	@Override
-	public BufferedImage edit(BufferedImage srcImage , HttpServletRequest request)
+	public BufferedImage edit(HttpServletRequest request , BufferedImage srcImage)
 	{
 		// 入力画像のピクセルの取得
 		int w = srcImage.getWidth();

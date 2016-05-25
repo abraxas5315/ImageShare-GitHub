@@ -7,6 +7,11 @@ import java.sql.SQLException;
 
 import data.Member;
 
+/**
+ * 会員情報テーブル参照DAO
+ * @author s.kawashima
+ *
+ */
 public class AccountDAO {
 
 	public Member authentication(String userID, String password) throws SQLException

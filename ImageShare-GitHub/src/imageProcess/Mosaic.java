@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像編集 - モザイク
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class Mosaic implements ImageEditor
 {
@@ -48,7 +48,7 @@ public class Mosaic implements ImageEditor
 		_length = length;
 	}
 	@Override
-	public BufferedImage edit(BufferedImage srcImage , HttpServletRequest request)
+	public BufferedImage edit(HttpServletRequest request , BufferedImage srcImage)
 	{
 		//モザイク１つの大きさ（ピクセル）を設定
 		String sLength = request.getParameter(PARAM_NAME_MOSAIC_LENGTH);

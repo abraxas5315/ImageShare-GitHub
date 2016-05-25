@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像に文字列を描画するエディタ
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class TextOnImage implements ImageEditor
 {
@@ -94,7 +94,7 @@ public class TextOnImage implements ImageEditor
 	}
 
 	@Override
-	public BufferedImage edit(BufferedImage srcImage , HttpServletRequest request)
+	public BufferedImage edit(HttpServletRequest request , BufferedImage srcImage)
 	{
 
 		// 描画文字列設定

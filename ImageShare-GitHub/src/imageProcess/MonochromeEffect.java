@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 画像編集 - 単色化効果
  *
- * @author t.yoshida
+ * @author s.kawashima
  */
 public class MonochromeEffect implements ImageEditor
 {
@@ -68,7 +68,7 @@ public class MonochromeEffect implements ImageEditor
 	}
 
 	@Override
-	public BufferedImage edit(BufferedImage srcImage , HttpServletRequest request)
+	public BufferedImage edit(HttpServletRequest request , BufferedImage srcImage)
 	{
 		//モノクロ指定
 		String sColor = request.getParameter(PARAM_NAME_COLOR_CONCOLOR);
