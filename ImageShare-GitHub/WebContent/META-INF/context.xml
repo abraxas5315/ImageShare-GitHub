@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  <Resource name="MySQL_JDBC"
+	auth="Container"
+	type="javax.sql.DataSource"
+	maxActive="100"
+	maxIdle="30"
+	maxWait="10000"
+	username="root"
+	password="root"
+	driverClassName="org.gjt.mm.mysql.Driver"
+	url="jdbc:mysql://localhost:3306/teama?autoReconnect=true"/>
+</Context>
+<!--
+参照: http://www.javaroad.jp/opensource/js_tomcat8.htm
+factory 	JDBC接続のデータ管理に使用するJavaクラスを指定。値はorg.apache.commons.dbcp.BasicDataSourceFactoryになる。
+maxActive 	データベース接続の最大接続数を指定。0の場合は無制限になる。
+maxIdle 	アイドル状態になっている最大接続数を指定。0の場合は無制限になる。
+maxWait 	接続しているコネクションが再度利用されるまでの待ち時間を指定。指定した時間をすぎると例外が発生する。-1の場合は無制限になる。
+username 	データベースに接続するためのユーザIDを指定。
+password 	データベースに接続するためのパスワードを指定。
+driverClassName 	JDBCドライバのJavaクラスを指定。MySQL Connector/Jの場合は、org.gjt.mm.mysql.Driverになる。
+url 	JDBC接続のためのJDBC準拠のURLを指定。
+-->
