@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import data.Article;
 import data.Member;
 import data.PersonalData;
-import db.AccountDAO;
 import db.PersonalDataDAO;
 
 /**
@@ -36,22 +35,22 @@ public class PersonalServlet extends MainServlet {
 			throws ServletException, IOException {
 		// セッションの取得
 		HttpSession session = request.getSession();
-
-		// ------------デバッグ用ログインセッション---------------
 		Member member = null;
-		try {
-			String userID = "shiomi";
-			String password = "1234";
-			member = new AccountDAO().authentication(userID, password);
-			session.setAttribute("member", member);
-		} catch (SQLException e) {
-			System.out.println("データベース関連エラー");
-		} catch (Exception e) {
-			System.out.println("例外");
-			e.printStackTrace();
-		}
-
-		// --------------デバッグ用ログインセッションここまで------------
+//		// ------------デバッグ用ログインセッション---------------
+//		Member member = null;
+//		try {
+//			String userID = "shiomi";
+//			String password = "1234";
+//			member = new AccountDAO().authentication(userID, password);
+//			session.setAttribute("member", member);
+//		} catch (SQLException e) {
+//			System.out.println("データベース関連エラー");
+//		} catch (Exception e) {
+//			System.out.println("例外");
+//			e.printStackTrace();
+//		}
+//
+//		// --------------デバッグ用ログインセッションここまで------------
 
 		// member のセッションを取得
 		member = (Member) session.getAttribute("member");
