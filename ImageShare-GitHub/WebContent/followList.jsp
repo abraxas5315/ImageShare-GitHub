@@ -1,7 +1,8 @@
+<%@page import="org.apache.catalina.startup.SetAllPropertiesRule"%>
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
-<%@ page import="db.FollowDAO"%>
-<%@ page import="data.Member"%>
+<%@ page import="data.Member,java.util.ArrayList, java.util.List"%>
+<%ArrayList<Member> follow = (ArrayList<Member>) session.getAttribute("selectFollow");%>
 
 
 <%
