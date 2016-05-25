@@ -1,11 +1,12 @@
 
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
- <%@ page import="data.*"%>
+ <%@ page import="data.*, java.util.ArrayList, java.util.List"%>
 
 <%
 PersonalData personal =  (PersonalData) request.getAttribute("personalData");
 Member member = (Member) session.getAttribute("member");
+List<Article> la = (ArrayList<Article>) session.getAttribute("list.article");
 
 %>
 
@@ -43,11 +44,11 @@ Member member = (Member) session.getAttribute("member");
 
 		<table class="time-line">
 			<tr>
-				<td> ニックネーム</td>
+				<td> ニックネーム <%=la.get(1).getName() %></td>
 			</tr>
 			<tr>
-				<td> ユーザID</td>
-				<td> タイムスタンプ</td>
+				<td> ユーザID <%=la.get(1).getAccountId() %></td>
+				<td> タイムスタンプ<%=la.get(1).getDate() %></td>
 			</tr>
 			<tr>
 				<td class="tl-image">
@@ -56,7 +57,7 @@ Member member = (Member) session.getAttribute("member");
 			</tr>
 			<tr>
 				<td class="coment">
-					投稿コメントだよ
+					<%=la.get(1).getText() %>
 				</td>
 			</tr>
 

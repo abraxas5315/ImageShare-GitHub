@@ -18,7 +18,7 @@ public interface ImageEditor
 	 * @param srcImage 編集対象画像
 	 * @return 編集後画像
 	 */
-	BufferedImage edit(BufferedImage srcImage , HttpServletRequest request);
+	BufferedImage edit(HttpServletRequest request , BufferedImage srcImage);
 
 	/**
 	 * 指定されたフィルタ値の処理を受け持つか否かを返す。

@@ -1,5 +1,15 @@
 package servlet;
 
+import imageProcess.CircleClipper;
+import imageProcess.GradationEffect;
+import imageProcess.GrayScale;
+import imageProcess.ImageEditor;
+import imageProcess.ImageOverlay;
+import imageProcess.ImageScaling;
+import imageProcess.MonochromeEffect;
+import imageProcess.Mosaic;
+import imageProcess.NoneFilter;
+import imageProcess.TextOnImage;
 import io.ImageFileStorage;
 
 import java.awt.image.BufferedImage;
@@ -9,14 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-
-import data.ImageEditor;
 
 /**
  * Servlet implementation class ImageServlet
@@ -69,31 +78,28 @@ public class ImageServlet extends MainServlet {
 							{
 							new GrayScale(),
 							new Mosaic(),
-							new Monochrome(),
+							new MonochromeEffect(),
 							new NoneFilter()
 							};
 					 image = editor(request, "base", editors1, image);
 					ImageEditor[] editors2 = new ImageEditor[]
 							{
-							new CircleClipping(),
-							new ImageOverlay(createOverlays()),
+							new CircleClipper(),
+							new ImageOverlay(request, createOverlays()),
 							new TextOnImage(),
-							new Gradation(),
-							new Thumbnail(),
+							new GradationEffect(),
+							new ImageScaling(),
 							new NoneFilter(),
 							};
-					image = editor(request, "filter", editors1, image);
-					image = WithOverFilter // オーバーフィルタ処理
-					(
-						request,
-						editor(request, "base", editors1, image)
-					);
+					image = editor(request, "filter", editors2, image);
 					imgFile = storage.store
 					(
 						getServletContext(), cType, image
 					);
 				}
 				request.setAttribute("dstImage", imgFile);
+			    RequestDispatcher rd = request.getRequestDispatcher("post.jsp");
+			    rd.forward(request, response);
 			}
 
 			// HTML書き出し
@@ -119,7 +125,7 @@ public class ImageServlet extends MainServlet {
 		{
 			if(e.isAcceptable(request.getParameter(paramName)))
 			{
-				filtered = e.filter(request,image);
+				filtered = e.edit(request,image);
 				break;
 			}
 		}
