@@ -98,7 +98,7 @@ public class ImageServlet extends MainServlet {
 					);
 				}
 				request.setAttribute("dstImage", imgFile);
-			    RequestDispatcher rd = request.getRequestDispatcher("post.jsp");
+			    RequestDispatcher rd = request.getRequestDispatcher("Post.jsp");
 			    rd.forward(request, response);
 			}
 
