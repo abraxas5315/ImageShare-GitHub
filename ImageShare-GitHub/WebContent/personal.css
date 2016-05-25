@@ -1,0 +1,37 @@
+@CHARSET "Windows-31J";
+
+div#wrapper {
+    width: 800px;
+    margin: 0 auto;
+    border: 1px solid #FF0000;
+}
+
+p {
+	border-style: solid;
+	border-width: 1px;
+	margin-left: 100px;
+    margin-right: 100px;
+    padding-bottom: 100px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+table {
+	 margin: 0 auto;
+
+}
+
+table.time-line {
+	border: 2px solid blue;
+	width:100%;
+}
+
+td.coment {
+	margin-bottom: 50px;
+	border: 1px solid red;
+}
+
+table td.tl-image {
+	margin: 0 auto;
+	text-aline: center;
+}

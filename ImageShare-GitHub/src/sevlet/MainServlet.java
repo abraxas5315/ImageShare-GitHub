@@ -1,4 +1,4 @@
-package servlet;
+package sevlet;
 
 import java.io.IOException;
 
@@ -8,34 +8,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db.DataSourceSupplier;
+
 /**
  * Servlet implementation class MainServlet
- * こめんと
  */
-@WebServlet("/MainServlet")
-public class MainServlet extends HttpServlet {
+@WebServlet("/main")
+public abstract class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MainServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
+	@Override
+	public void init() throws ServletException
+	{
+		super.init();
+		// データソースの作成
+		DataSourceSupplier.getInstance();
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		// 文字コード設定
+		request.setCharacterEncoding("Windows-31J");
+		//response.setContentType("text/html; charset=Windows-31J");
+		response.setCharacterEncoding("Windows-31J");
+
+		doMain(request,response);
 	}
+
+	abstract void doMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
 
 }
