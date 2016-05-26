@@ -21,12 +21,13 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 	</head>
 
 	<body>
-	<jsp:include page="header.jsp"/>
-
-		<div align="center">
+	<div align="center">
+			<jsp:include page="header.jsp"/>
 
 			<h1>フォロー</h1>
-				<table>
+	</div>
+
+				<table class="follow">
 				<%// フォローしている人のリストを表示する
 				for(Member mem : follow){%>
 				<tr>	<td><div class="icon"><img border="0" src="<%=mem.getIcon() %>" width="80" height="80" alt="イラスト1"></div></td>
@@ -34,6 +35,5 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 						</tr><%} %>
 
 				</table>
-		</div>
 	</body>
 </html>
