@@ -46,7 +46,7 @@ public class PostServlet extends MainServlet{
 		String text = request.getParameter("text");
 
 		//ログインしたアカウント情報
-		Member member = (Member)session.getAttribute("Member");
+		Member member = (Member)session.getAttribute("member");
 
 		//デバッグ用
 		//Member member = new Member("aaaa", "aaaa", "aaaa", "aaaa");
