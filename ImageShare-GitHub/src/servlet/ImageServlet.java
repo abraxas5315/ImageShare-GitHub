@@ -57,7 +57,13 @@ public class ImageServlet extends MainServlet {
 			// ファイルサイズの取得
 			long size = p.getSize();
 			System.out.println("size: " + size);
+			if(size >= 20000000){
+				request.setAttribute("size", size);
+				RequestDispatcher rd = request.getRequestDispatcher("image_upload.jsp");
+				rd.forward(request, response);
+			}
 
+			System.out.println(clipUploadFileName(p));
 			// 画像ファイルの取得
 			BufferedImage image = null;
 			try{
@@ -77,7 +83,7 @@ public class ImageServlet extends MainServlet {
 					new MonochromeEffect(),
 					new NoneFilter()
 				};
-			// image = editor(request, "base", editors1, image);
+			image = editor(request, "base", editors1, image);
 			ImageEditor[] editors2 = new ImageEditor[]
 				{
 					new CircleClipper(),
@@ -89,8 +95,11 @@ public class ImageServlet extends MainServlet {
 				};
 			image = editor(request, "filter", editors2, image);
 			imgFile = storage.store(getServletContext(), cType, image);
-			request.setAttribute("dstImage", imgFile.getName());
-			RequestDispatcher rd = request.getRequestDispatcher("Post.jsp");
+			String dstImage = imgFile.getName();
+			request.setAttribute("dstImage", dstImage);
+			String path =ImageFileStorage.getRelativeImageDir();
+			request.setAttribute("path", path);
+			RequestDispatcher rd = request.getRequestDispatcher("post.jsp");
 			rd.forward(request, response);
 			// HTML書き出し
 //		}
