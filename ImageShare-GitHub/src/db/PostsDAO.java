@@ -71,8 +71,9 @@ public class PostsDAO{
 		StringBuilder str = new StringBuilder();
 		str.append("SELECT t2.follow_id , name , my_image , profile ");
 		str.append("FROM m_account t1,t_follow t2 ");
-		str.append("WHERE t1.account_id = t2.account_id  ");
+		str.append("WHERE t1.account_id = t2.follow_id  ");
 		str.append("AND t2.account_id= ? ");
+
 		String query = str.toString();
 
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
@@ -84,7 +85,7 @@ public class PostsDAO{
 
 			while (res.next()) {
 				follows.add(new Member(
-						(res.getString("account_id")),
+						(res.getString("follow_id")),
 						(res.getString("name")),
 						(res.getString("my_image")),
 						(res.getString("profile"))
