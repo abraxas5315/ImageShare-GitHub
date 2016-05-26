@@ -1,12 +1,11 @@
 package db;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import data.Article;
@@ -25,10 +24,17 @@ import data.Member;
  *
  */
 public class PostsDAO{
+	/**
+	 *
+	 * データベースに記事型の投稿内容を追加するクラス
+	 *
+	 * @author s.funo
+	 *
+	 */
 	public void post(Article article) throws SQLException{
 		// クエリ文
 		String query = "INSERT INTO teama.t_article(account_id,image_url,text,date) VALUES(?,?,?,?)";
-
+		//コネクション保持クラス
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
 		try
 		(
@@ -36,19 +42,14 @@ public class PostsDAO{
 				PreparedStatement stmt = con.prepareStatement(query);
 				)
 				{
-			Date dateSql= new Date(article.getDate().getTime());
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(article.getDate());
-			cal.set(Calendar.HOUR_OF_DAY, 0);
-			cal.set(Calendar.MINUTE, 0);
-			cal.set(Calendar.SECOND, 0);
-			cal.set(Calendar.MILLISECOND, 0);
-			java.sql.Date d2 = new java.sql.Date(cal.getTimeInMillis());
+			//データベースに時間格納する為のフォーマット準備
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
 			// コードを設定
 			stmt.setString(1,article.getAccountId());
 			stmt.setString(2, article.getImageUrl());
 			stmt.setString(3, article.getText());
-			stmt.setDate(4, dateSql);
+			stmt.setString(4, sdf.format(article.getDate()));
 			stmt.executeUpdate();
 				}
 	}

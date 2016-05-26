@@ -30,9 +30,9 @@ public class ImageFileStorage
 	 *
 	 * @return
 	 */
-	public static String getAbsoluteImageDir(ServletContext context)
+	public static String getAbsoluteImageDir(ServletContext context, String id)
 	{
-		return (context.getRealPath(getRelativeImageDir()));
+		return (context.getRealPath(getRelativeImageDir(id)));
 	}
 
 	/**
@@ -40,10 +40,11 @@ public class ImageFileStorage
 	 *
 	 * @return
 	 */
-	public static String getRelativeImageDir()
+	public static String getRelativeImageDir(String id)
 	{
+		String path = "upload/" + id + "/";
 		//return "res/img/";
-		return "upload/img/";
+		return path;
 	}
 
 	/**
@@ -55,11 +56,11 @@ public class ImageFileStorage
 	 */
 	private File createImageFilePath
 	(
-		ServletContext context, String contentType
+		ServletContext context, String contentType, String id
 	)
 	{
 		// フォルダの作成
-		File dir = new File(getAbsoluteImageDir(context));
+		File dir = new File(getAbsoluteImageDir(context,id));
 		if(!dir.exists())
 		{
 			// 指定フォルダが存在しない場合作成する
@@ -81,11 +82,11 @@ public class ImageFileStorage
 	 */
 	public File store
 	(
-		ServletContext context, String contentType, InputStream in
+		ServletContext context, String contentType, InputStream in,String id
 	)
 		throws IOException
 	{
-		File file = createImageFilePath(context, contentType);
+		File file = createImageFilePath(context, contentType,id);
 		try
 		(
 			BufferedOutputStream out = new BufferedOutputStream
@@ -124,11 +125,11 @@ public class ImageFileStorage
 	public File store
 	(
 		ServletContext context,
-		String contentType, BufferedImage image
+		String contentType, BufferedImage image, String id
 	)
 		throws IOException
 	{
-		File file = createImageFilePath(context, contentType);
+		File file = createImageFilePath(context, contentType,id);
 		ImageIO.write(image, format(contentType), file);
 
 		return file;
