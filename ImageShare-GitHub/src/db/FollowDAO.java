@@ -27,10 +27,11 @@ public class FollowDAO {
 
 		// データソースの取得
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
-		String query = "SELECT t1.account_id,name,my_image,profile "
+		String query = "SELECT t2.follow_id,name,my_image,profile "
 				+ "FROM m_account t1,t_follow t2 "
 				+ "WHERE t1.account_id=t2.follow_id "
 				+ "AND t2.account_id=?";
+
 		try (
 			// データベースへの接続の取得、ステートメント取得、SQLステートメントの実行
 			Connection con = supplier.getConnection();
@@ -43,7 +44,7 @@ public class FollowDAO {
 			// 結果の取得
 			while (res.next()) {
 				member = new Member(
-						res.getString("account_id"),
+						res.getString("follow_id"),
 						res.getString("name"),
 						res.getString("my_image"),
 						res.getString("profile"));
