@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.Article;
+/**
+ * 投稿する際に使われるDAO
+ * 
+ * @author s.funo
+ *
+ */
 import data.Member;
 
 public class PostsDAO{
@@ -119,6 +125,7 @@ public class PostsDAO{
 	 * @param member 表示する個人ページの会員情報
 	 * @return 取得した個人の投稿
 	 * @throws SQLException
+	 * @author s.kawashima
 	 */
 	public List<Article> selectMyPosts(Member member) throws SQLException
 	{
