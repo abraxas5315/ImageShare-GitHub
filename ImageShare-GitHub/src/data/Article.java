@@ -73,4 +73,12 @@ public class Article {
 		return date;
 	}
 
+	/**
+	 * 記事の投稿者を返す
+	 * @return 投稿者
+	 */
+	public Member getMember()
+	{
+		return member;
+	}
 }
