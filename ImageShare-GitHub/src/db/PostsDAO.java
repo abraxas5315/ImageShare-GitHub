@@ -69,10 +69,10 @@ public class PostsDAO{
 
 		//フォローリスト取得用のSQL文
 		StringBuilder str = new StringBuilder();
-		str.append("SELECT t2.account_id , name , my_image , profile ");
+		str.append("SELECT t2.follow_id , name , my_image , profile ");
 		str.append("FROM m_account t1,t_follow t2 ");
 		str.append("WHERE t1.account_id = t2.account_id  ");
-		str.append("AND t2.follow_id= ? ");
+		str.append("AND t2.account_id= ? ");
 		String query = str.toString();
 
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
@@ -93,7 +93,7 @@ public class PostsDAO{
 
 			//TL取得用のSQL文
 			str.delete(0, str.length());
-			str.append("SELECT account_id , image_url , text , date FROM t_article WHERE account_id IN(?");
+			str.append("SELECT * FROM t_article WHERE account_id IN(?");
 
 			for(int i=0 ; i<follows.size() ; i++)
 			{
@@ -133,6 +133,7 @@ public class PostsDAO{
 					//記事の格納
 					articles.add(new Article(
 							fMember,
+							(res2.getInt("article_id")),
 							(res2.getString("text")),
 							(res2.getString("image_url")),
 							(res2.getTimestamp("date"))
@@ -166,16 +167,17 @@ public class PostsDAO{
 			//コード設定
 			pstmt.setString(1, member.getAccountId());
 
-			ResultSet res2 = pstmt.executeQuery();
+			ResultSet res = pstmt.executeQuery();
 
 			//取得した1個人投稿の格納
-			while (res2.next()) {
+			while (res.next()) {
 				//記事の格納
 				articles.add(new Article(
 						member,
-						(res2.getString("text")),
-						(res2.getString("image_url")),
-						(res2.getTimestamp("date"))
+						(res.getInt("article_id")),
+						(res.getString("text")),
+						(res.getString("image_url")),
+						(res.getTimestamp("date"))
 						));
 			}
 				}
