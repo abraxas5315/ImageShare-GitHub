@@ -1,8 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import data.Member;
-import db.AccountDAO;
 import db.DataSourceSupplier;
 import db.FollowDAO;
 
@@ -43,45 +42,33 @@ public class ShowFollowServlet extends MainServlet {
     void doMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// セッションの取得
     	HttpSession session = request.getSession();
+    	Member member = null;
 
-		// ------------デバッグ用ログインセッション---------------
-		Member member = null;
+    	// memberのセッションを取得
+		member = (Member) session.getAttribute("member");
+
+		// DAOをインスタンス化
+		FollowDAO dao = new FollowDAO();
+
+		// Member型のリストfollowを生成
+		List<Member> follow = new ArrayList<Member>();
+
+		// followにreturnを格納
 		try {
-			String userID = "aaaa";
-			String password = "aaaaaaaa";
-			member = new AccountDAO().authentication(userID, password);
-		session.setAttribute("member", member);
-		} catch (SQLException e) {
-			System.out.println("データベース関連エラー");
+			follow = dao.selectFollow(member);
 
-		}
+			} catch (Exception e) {
+				// 例外
+				e.printStackTrace();
+			}
 
-		// --------------デバッグ用ログインセッションここまで------------
+		// followをrequestスコープに格納
+		request.setAttribute("follow", follow);
 
-    	// DAOをインスタンス化
-    	FollowDAO dao = new FollowDAO();
+	// 移譲先のjspを格納
+	String url = "followList.jsp";
 
-
-    	ArrayList<Member> follow = new ArrayList<Member>();
-
-
-    	try {
-    		 follow = dao.selectFollow(member);
-
-    			} catch (Exception e) {
-    				// TODO 自動生成された catch ブロック
-    				e.printStackTrace();
-    			}
-
-    	request.setAttribute("follow", follow);
-
-    	//Member member = (Member) session.getAttribute("member");
-
-
-    	// 移譲先のjspを格納する変数
-    	String url = "followList.jsp";
-
-    	RequestDispatcher rd = request.getRequestDispatcher(url);
-    	rd.forward(request, response);
+	RequestDispatcher rd = request.getRequestDispatcher(url);
+	rd.forward(request, response);
 	}
 }
