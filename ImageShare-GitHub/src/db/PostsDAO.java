@@ -1,6 +1,7 @@
 package db;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,13 @@ import data.Article;
  *
  */
 import data.Member;
-
+/**
+ *
+ * データベースに記事型の投稿内容を追加するクラス
+ *
+ * @author s.funo
+ *
+ */
 public class PostsDAO{
 	public void post(Article article) throws SQLException{
 		// クエリ文
@@ -29,6 +36,7 @@ public class PostsDAO{
 				PreparedStatement stmt = con.prepareStatement(query);
 				)
 				{
+			Date dateSql= new Date(article.getDate().getTime());
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(article.getDate());
 			cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -40,7 +48,7 @@ public class PostsDAO{
 			stmt.setString(1,article.getAccountId());
 			stmt.setString(2, article.getImageUrl());
 			stmt.setString(3, article.getText());
-			stmt.setDate(4, d2);
+			stmt.setDate(4, dateSql);
 			stmt.executeUpdate();
 				}
 	}

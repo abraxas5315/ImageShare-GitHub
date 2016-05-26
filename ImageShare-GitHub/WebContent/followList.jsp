@@ -9,9 +9,6 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 <%
 	// サーブレットパスの作成
 	String path = request.getContextPath() + "/main";
-
-	// ログイン情報の取得
-
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -28,10 +25,8 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 
 		<div align="center">
 
-			<h3></h3>
-
-			<form name="form1" method="post" action="<%= path %>">
 			<h1>フォロー</h1>
+			<form name="form1" method="post" action="<%= path %>">
 				<table>
 				<%// フォローしている人のリストを表示する
 				for(Member mem : follow){%>

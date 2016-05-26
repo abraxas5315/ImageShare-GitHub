@@ -10,6 +10,7 @@
 		<title>投稿</title>
 	</head>
 	<body>
+	<jsp:include page="header.jsp"/>
 		<div align="center">
 			<%if(size != null){ %>
 				 <font color="red">ファイルサイズを2MBまでにしてください。
