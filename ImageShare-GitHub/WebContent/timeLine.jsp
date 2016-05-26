@@ -42,9 +42,9 @@ String formatDate = "";
 								ID <%=la.getAccountId() %>
 							</strong>
 
-<form action="/personal" method="post">
+<form action="personal" method="post">
 <p>○○<input type="submit" name="名前" value="個人ページへ"></p>
-<p>○○<input type=”hidden” name="名前" value= "<%=la.getAccountId()%>"></p>
+<p>○○<input type=”hidden” name="otherId" value="<%=la.getAccountId()%>"></p>
 </form>
 
 

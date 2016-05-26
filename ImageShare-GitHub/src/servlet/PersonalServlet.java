@@ -55,16 +55,16 @@ public class PersonalServlet extends MainServlet {
 //
 //		// --------------デバッグ用ログインセッションここまで------------
 
-		// member のセッションを取得
-
 		// 押下したユーザのID
 		otherId = request.getParameter("otherId");
+		System.out.println(otherId);
 
 		if(otherId == null) {
 			// ログイン者のセッション
 			member = (Member) session.getAttribute("member");
 		} else {
 			AccountDAO adao = new AccountDAO();
+			System.out.println("chek");
 			try {
 				member = adao.selectByAccount(otherId);
 			} catch (SQLException e) {
@@ -105,6 +105,9 @@ public class PersonalServlet extends MainServlet {
 
 		// フォロー数などが格納されている personalDataをrequestスコープに格納
 		request.setAttribute("personalData", personalData);
+
+		// アカウント情報をrequestスコープに格納
+		request.setAttribute("other", member);
 
 		// 過去の投稿リストをrequestスコープに格納
 		request.setAttribute("list.article", la);
