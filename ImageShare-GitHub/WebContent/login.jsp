@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-31J"
+name="author" content="kawashima">
 <title>ログイン画面</title>
 </head>
 <body>
