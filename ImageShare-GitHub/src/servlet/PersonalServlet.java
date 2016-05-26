@@ -74,9 +74,9 @@ public class PersonalServlet extends MainServlet {
 
 		List<Article> la = new ArrayList<Article>();
 
-		// DAOからのreturnをBeansに格納
+		// DAOからのreturnをListに格納
 		try {
-			// member を元に個人ページで表示するPersonalDataをとる。
+			// member を元に個人ページで表示する過去の投稿をとる。
 			la = dao.selectMyPosts(member);
 			// if(personalData.getA)
 

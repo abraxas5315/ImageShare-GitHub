@@ -1,12 +1,16 @@
 
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
- <%@ page import="data.*, java.util.ArrayList, java.util.List"%>
+ <%@ page import="data.*, java.util.ArrayList, java.util.List, java.text.SimpleDateFormat"%>
 
 <%
 PersonalData personal =  (PersonalData) request.getAttribute("personalData");
 Member member = (Member) session.getAttribute("member");
 List<Article> listArticle = (ArrayList<Article>) request.getAttribute("list.article");
+
+SimpleDateFormat formatA =
+new SimpleDateFormat("yyyy年MM月dd hh時mm分ss秒");
+String formatDate = "";
 
 %>
 
@@ -46,27 +50,47 @@ List<Article> listArticle = (ArrayList<Article>) request.getAttribute("list.arti
 		Article la = listArticle.get(i);
 		%>
 
+			<div class="content">
 
-		<table class="time-line">
-			<tr>
-				<td> ニックネーム <%=la.getName() %></td>
-			</tr>
-			<tr>
-				<td> ユーザID <%=la.getAccountId() %></td>
-				<td> タイムスタンプ<%=la.getDate() %></td>
-			</tr>
-			<tr>
-				<td class="tl-image">
+				<div class="message">
+					<div class="icon">
+						<img border="0" src="images/Desert.jpg" width="80" height="80" alt="イラスト1">
+					</div>
+
+					<div class="account">
+						<a class="link" href="./userid">
+							<span class="name">
+						 		 <%=la.getName() %>
+							</span>
+
+							<strong class="user-id">
+								ID <%=la.getAccountId() %>
+							</strong>
+
+						</a>
+					</div>
+
+					<div class="comment">
+
+						<%=la.getText() %>
+						<div class="date">
+						<% formatDate = formatA.format(la.getDate()); %>
+						<%=formatDate %>
+						</div>
+
+					</div>
+
+
+				</div>
+
+				<div class="my-image">
+
 					<img border="0" src="images/Desert.jpg" width="500" height="500" alt="イラスト1">
-				</td>
-			</tr>
-			<tr>
-				<td class="coment">
-					<%=la.getText() %>
-				</td>
-			</tr>
 
-		</table>
+				</div>
+			</div>
+
+			<hr>
 
 		<%
 		}
