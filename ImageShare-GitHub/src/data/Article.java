@@ -11,6 +11,8 @@ public class Article {
 
 	//記事を投稿した会員
 	private Member member;
+	//投稿ＩＤ
+	private int articleId;
 	//投稿内容
 	private String text;
 	//投稿画像のURL
@@ -19,7 +21,7 @@ public class Article {
 	private Date date;
 
 	/**
-	 * コンストラクタ
+	 * コンストラクタ 投稿記事生成用
 	 * @param member 投稿した会員の情報
 	 * @param text 投稿の内容
 	 * @param imageUrl 投稿画像のパス
@@ -31,6 +33,30 @@ public class Article {
 		this.text = text;
 		this.imageUrl = imageUrl;
 		this.date = date;
+	}
+
+	/**
+	 * コンストラクタ 記事取得時用
+	 * @param member 投稿した会員の情報
+	 * @param text 投稿の内容
+	 * @param imageUrl 投稿画像のパス
+	 * @param date 投稿日時
+	 */
+	public Article(Member member, int articleId , String text , String imageUrl,Date date)
+	{
+		this.member = member;
+		this.articleId = articleId;
+		this.text = text;
+		this.imageUrl = imageUrl;
+		this.date = date;
+	}
+
+	/**
+	 * 記事の投稿ＩＤを返す
+	 * @return 記事の投稿ＩＤ
+	 */
+	public int getArticleId() {
+		return articleId;
 	}
 
 	/**
