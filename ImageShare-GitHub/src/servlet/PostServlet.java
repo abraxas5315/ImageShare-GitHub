@@ -19,6 +19,12 @@ import db.PostsDAO;
  * Servlet implementation class Post
  */
 @WebServlet("/post")
+/**
+ * 投稿をするサーブレット
+ *
+ * @author s.funo
+ *
+ */
 public class PostServlet extends MainServlet{
 	private static final long serialVersionUID = 1L;
     public PostServlet() {
@@ -34,13 +40,16 @@ public class PostServlet extends MainServlet{
 	    HttpSession session = request.getSession();
 
 	    //リクエストの取得
-	    String dstImage = (String)request.getAttribute("dstImage");
+	    String dstImage = (String)request.getParameter("dstImage");
 
 		// リクエストテキストの値を取得
 		String text = request.getParameter("text");
 
 		//ログインしたアカウント情報
 		Member member = (Member)session.getAttribute("Member");
+
+		//デバッグ用
+		//Member member = new Member("aaaa", "aaaa", "aaaa", "aaaa");
 
 		//DATE型でインスタンスを作成(時間を取得)
 		Date date = new Date();
@@ -49,7 +58,8 @@ public class PostServlet extends MainServlet{
 		PostsDAO dao = new PostsDAO();
 		try {
 			dao.post(article);
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}

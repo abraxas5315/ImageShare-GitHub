@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
     <%@ page import="servlet.ImageServlet" %>
-    <%String size =(String)session.getAttribute("size"); %>
+    <%String size =(String)request.getAttribute("size"); %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,7 +39,7 @@
 						<td><img src = "sample/sample_none_filter.jpg" width = "100"></td>
 						<td><img src = "sample/sample_none_filter.jpg" width = "100"></td>
 						<td><img src = "sample/sample_none_filter.jpg" width = "100"></td></tr>
-						<tr><th><input type = "radio" name="filter" value="none"checked></th>
+						<tr><th><input type = "radio" name="filter" value="filter.none"checked></th>
 						<th><input type = "radio" name="filter" value="Circl"></th>
 						<th><input type = "radio" name="filter" value="Text">
 						<select name="TextOn">
