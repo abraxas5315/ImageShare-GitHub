@@ -12,9 +12,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
 		<title>投稿</title>
+		<link rel="stylesheet" href="personal.css" type="text/css">
 	</head>
 	<body>
-		<jsp:include page="header.jsp"/>
+	<jsp:include page="header.jsp"/>
 		<div align="center">
 			<form action="post" method="post">
 				<input type="hidden" name="dstImage" value="<%=path %>">
