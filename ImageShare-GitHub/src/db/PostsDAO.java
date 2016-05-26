@@ -149,7 +149,7 @@ public class PostsDAO{
 		List<Article> articles = new ArrayList<Article>();
 
 		//個人投稿取得
-		String query = "SELECT image_url , text , date FROM t_article WHERE account_id = ?";
+		String query = "SELECT image_url , text , date FROM t_article WHERE account_id = ? ORDER BY date DESC";
 
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
 		try (Connection con = supplier.getConnection();
