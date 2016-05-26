@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
+<%@ page import="data.Member" %>
 <!DOCTYPE html">
-
+<% Member member = (Member)session.getAttribute("member"); %>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
@@ -10,7 +11,7 @@
 	<body><div style="background:darkseagreen">
 		<table>
 		<tr>
-		<td></td>
+		<td><a href="personal"><%= member.getName()%>&nbsp;&nbsp;<%= member.getAccountId() %></a></td>
 		<td><a href="TL"><input type = button name = timeline value = "タイムライン"></a></td>
 		<td><a href="image_upload.jsp"><input type = button name = post value = "投稿" ></a></td>
 		<td><a href="login.jsp"><input type = button name = logout value = "ログアウト" ></a></td></tr>
