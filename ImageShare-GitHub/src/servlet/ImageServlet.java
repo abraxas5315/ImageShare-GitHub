@@ -66,7 +66,7 @@ public class ImageServlet extends MainServlet {
 			// ファイルサイズの取得
 			long size = p.getSize();
 			System.out.println("size: " + size);
-			if(size >= 20000000){
+			if(size >= 2000000){
 				request.setAttribute("size", size);
 				RequestDispatcher rd = request.getRequestDispatcher("image_upload.jsp");
 				rd.forward(request, response);
