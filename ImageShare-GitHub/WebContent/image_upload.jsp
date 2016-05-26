@@ -20,9 +20,9 @@
 					<span><br>ベースフィルター
 					</span>
 					<table>
-						<tr><td><img src = "sample/sample_none_filter.jpg" width = "100"></td>
-						<td><img src = "sample/sample_none_filter.jpg" width = "100"></td>
-						<td><img src = "sample/sample_none_filter.jpg" width = "100"></td></tr>
+						<tr><td><img src = "sample/a.jpg" width = "100"></td>
+						<td><img src = "sample/b.jpg" width = "100"></td>
+						<td><img src = "sample/c.jpg" width = "100"></td></tr>
 						<tr><th><input type = "radio" name="base" value="None"checked></th>
 						<th><input type = "radio" name="base" value="<%= Mosaic.FILTER_VALUE %>">
 							<select name="<%= Mosaic.PARAM_NAME_MOSAIC_LENGTH %>">
@@ -40,11 +40,11 @@
 					<span>詳細フィルター
 					</span>
 					<table>
-						<tr><td><img src = "sample/sample_none_filter.jpg" width = "100"></td>
-						<td><img src = "sample/sample_none_filter.jpg" width = "100"></td>
-						<th><img src = "sample/sample_none_filter.jpg" width = "100"></th>
-						<td><img src = "sample/sample_none_filter.jpg" width = "100"></td>
-						<td><img src = "sample/sample_none_filter.jpg" width = "100"></td></tr>
+						<tr><td><img src = "sample/a.jpg" width = "100"></td>
+						<td><img src = "sample/d.jpg" width = "100"></td>
+						<th><img src = "sample/e.jpg" width = "100"></th>
+						<td><img src = "sample/f.jpg" width = "100"></td>
+						<td><img src = "sample/g.jpg" width = "100"></td></tr>
 						<tr><th><input type = "radio" name="filter" value="<%= NoneFilter.FILTER_VALUE  %>"checked></th>
 						<th><input type = "radio" name="filter" value="<%= CircleClipper.FILTER_VALUE %>"></th>
 						<th><input type = "radio" name="filter" value="<%= TextOnImage.FILTER_VALUE %>"><br>
@@ -59,7 +59,12 @@
 							</select>
 						</th>
 						<th><input type = "radio" name="filter" value="<%= GradationEffect.FILTER_VALUE %>"></th>
-						<th><input type = "radio" name="filter" value="<%= ImageOverlay.FILTER_VALUE %>"></th></tr>
+						<th><input type = "radio" name="filter" value="<%= ImageOverlay.FILTER_VALUE %>">
+												<select name="<%= ImageOverlay.PARAM_NAME_IMG_OVERLAY %>">
+								<option value="sample">サンプル</option>
+								<option value="correct">正解</option>
+								<option value="wrong">不正解</option></select>
+						</th></tr>
 					</table>
 					<br>
 					<input type="submit" value ="画像をアップロード">

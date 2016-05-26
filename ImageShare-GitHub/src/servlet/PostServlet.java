@@ -63,8 +63,8 @@ public class PostServlet extends MainServlet{
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-		//Edit.jspに委譲
-	    RequestDispatcher rd = request.getRequestDispatcher("TLServlet.java");
+		//TLサーブレットに委譲
+	    RequestDispatcher rd = request.getRequestDispatcher("TL");
 	    rd.forward(request, response);
 	}
 
