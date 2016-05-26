@@ -26,7 +26,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import data.Member;
 
 
 /**
@@ -44,10 +47,16 @@ public class ImageServlet extends MainServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    /**
+     * s.funo
+     *
+     * 画像パスから画像処理を行いパスを返すサーブレット
+     */
     protected void doMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ImageFileStorage storage = new ImageFileStorage();
+		//セッションの取得
+	    HttpSession session = request.getSession();
 //		try
 //		{
 			File imgFile = null;
@@ -68,14 +77,14 @@ public class ImageServlet extends MainServlet {
 			BufferedImage image = null;
 			try{
 				image = ImageIO.read(p.getInputStream());
-			}catch(IOException ex){
+			}
+			catch(IOException ex){
+				ex.printStackTrace();
 				// 仮のイメージ
 				image = new BufferedImage(300, 200, BufferedImage.TYPE_INT_RGB);
 			}
 
-			/*
-			 * フィルタ処理＆画像保存
-			*/
+			 // ベースフィルタ処理
 			ImageEditor[] editors1 = new ImageEditor[]
 				{
 					new GrayScale(),
@@ -84,6 +93,8 @@ public class ImageServlet extends MainServlet {
 					new NoneFilter()
 				};
 			image = editor(request, "base", editors1, image);
+
+			//オーバーフィルタ処理
 			ImageEditor[] editors2 = new ImageEditor[]
 				{
 					new CircleClipper(),
@@ -94,11 +105,21 @@ public class ImageServlet extends MainServlet {
 					new NoneFilter(),
 				};
 			image = editor(request, "filter", editors2, image);
-			imgFile = storage.store(getServletContext(), cType, image);
+
+			//ファイルパスの作成と保存
+			Member member = (Member)session.getAttribute("member");
+			String id = member.getAccountId();
+			//デバッグ用
+			//String id = "aaaa";
+			imgFile = storage.store(getServletContext(), cType, image,id);
+
+			//リクエストに画像情報保存
 			String dstImage = imgFile.getName();
 			request.setAttribute("dstImage", dstImage);
-			String path =ImageFileStorage.getRelativeImageDir();
+			String path =ImageFileStorage.getRelativeImageDir(id);
 			request.setAttribute("path", path);
+
+			//post.jspに委譲
 			RequestDispatcher rd = request.getRequestDispatcher("post.jsp");
 			rd.forward(request, response);
 	}
@@ -129,7 +150,7 @@ public class ImageServlet extends MainServlet {
 	{
 		List<ImageOverlay.OverlayImage> list = new ArrayList<>();
 
-		File fileSample = new File(getServletContext().getRealPath("sample/") + "/sample.png");
+		File fileSample = new File(getServletContext().getRealPath("res/img/") + "/sample.png");
 		final BufferedImage imgSample = ImageIO.read(fileSample);
 		list.add
 		(
@@ -142,7 +163,7 @@ public class ImageServlet extends MainServlet {
 			}
 		);
 
-		File fileCorrect = new File(getServletContext().getRealPath("sample/") + "/correct.png");
+		File fileCorrect = new File(getServletContext().getRealPath("res/img/") + "/correct.png");
 		final BufferedImage imgCorrect = ImageIO.read(fileCorrect);
 		list.add
 		(
@@ -155,7 +176,7 @@ public class ImageServlet extends MainServlet {
 			}
 		);
 
-		File fileWrong = new File(getServletContext().getRealPath("sample/") + "/wrong.png");
+		File fileWrong = new File(getServletContext().getRealPath("res/img/") + "/wrong.png");
 		final BufferedImage imgWrong = ImageIO.read(fileWrong);
 		list.add
 		(
