@@ -11,7 +11,7 @@ import java.util.List;
 import data.Article;
 /**
  * 投稿する際に使われるDAO
- * 
+ *
  * @author s.funo
  *
  */
@@ -97,7 +97,7 @@ public class PostsDAO{
 					follow.append(",").append(f.getAccountId());
 				}
 				// コードを設定
-				pstmt.setString(1, follow.toString());
+				pstmt2.setString(1, follow.toString());
 
 				ResultSet res2 = pstmt2.executeQuery();
 				Member fMember = null;
