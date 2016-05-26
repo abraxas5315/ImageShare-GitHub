@@ -14,6 +14,13 @@ import data.Member;
  */
 public class AccountDAO {
 
+	/**
+	 * ログイン認証
+	 * @param userID 入力されたID
+	 * @param password 入力されたパスワード
+	 * @return ログインに成功した会員情報orNULL
+	 * @throws SQLException
+	 */
 	public Member authentication(String userID, String password) throws SQLException
 	{
 		Member member = null;
@@ -48,6 +55,12 @@ public class AccountDAO {
 		return member;
 	}
 
+	/**
+	 * 会員情報を特定する
+	 * @param accountId
+	 * @return 会員一人の情報
+	 * @throws SQLException
+	 */
 	public Member selectByAccount(String accountId) throws SQLException
 	{
 		Member member = null;
