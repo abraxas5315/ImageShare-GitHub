@@ -41,9 +41,9 @@
 					</span>
 					<table>
 						<tr><td><img src = "sample/a.jpg" width = "100"></td>
-						<td><img src = "sample/d" width = "100"></td>
-						<th><img src = "sample/e" width = "100"></th>
-						<td><img src = "sample/f" width = "100"></td>
+						<td><img src = "sample/d.jpg" width = "100"></td>
+						<th><img src = "sample/e.jpg" width = "100"></th>
+						<td><img src = "sample/f.jpg" width = "100"></td>
 						<td><img src = "sample/sample_none_filter.jpg" width = "100"></td></tr>
 						<tr><th><input type = "radio" name="filter" value="<%= NoneFilter.FILTER_VALUE  %>"checked></th>
 						<th><input type = "radio" name="filter" value="<%= CircleClipper.FILTER_VALUE %>"></th>
