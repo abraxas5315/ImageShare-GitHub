@@ -12,14 +12,31 @@ new SimpleDateFormat("yyyy年MM月dd HH時mm分ss秒");
 String formatDate = "";
 %>
 
-<!DOCTYPE html">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
-<title>Insert title here</title>
+<link rel="stylesheet" href="personal.css" type="text/css">
+<title>タイムライン</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
+
+	<div id="wrapper">
+		<div class="my-profile">
+			<table class="user">
+				<tr>
+					<!-- <th> <img border="0" src="<%=member.getIcon()%>" width="128" height="128" alt="イラスト1"> </th>   -->
+					<th> <img border="0" src="images/Desert.jpg" width="128" height="128" alt="イラスト1"> </th>
+					<th> <%=member.getName() %> </th>
+					<th> <%=member.getAccountId() %> </th>
+				</tr>
+			</table>
+			<p> <%=member.getProfile() %></p>
+		</div>
+
+
+
 
 
 		<%for(int i=0; i<timeLine.size(); i++){
@@ -65,7 +82,7 @@ String formatDate = "";
 
 				<div class="my-image">
 
-					<img border="0" src="<%=la.getImageUrl()%>" width="500" height="500" alt="イラスト1">
+					<img border="0" src="<%=la.getImageUrl()%>" width="500" alt="イラスト1">
 
 				</div>
 			</div>
@@ -75,6 +92,7 @@ String formatDate = "";
 		<%
 		}
 		%>
+	</div>
 
 
 

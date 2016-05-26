@@ -92,7 +92,7 @@ String formatDate = "";
 
 				<div class="my-image">
 
-					<img border="0" src="images/Desert.jpg" width="500" height="500" alt="イラスト1">
+					<img border="0" src="<%=la.getImageUrl()%>" width="500" alt="イラスト1">
 
 				</div>
 			</div>
