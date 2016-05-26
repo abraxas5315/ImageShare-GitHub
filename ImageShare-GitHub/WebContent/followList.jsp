@@ -2,7 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
 <%@ page import="data.Member,java.util.ArrayList, java.util.List"%>
-<%ArrayList<Member> follow = (ArrayList<Member>) session.getAttribute("selectFollow");%>
+<%
+ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 
 
 <%
@@ -35,10 +36,11 @@
 			<form name="form1" method="post" action="<%= path %>">
 			<h1>フォロー</h1>
 				<table  cellspacing=1 cellpadding=20>
-				<%for(Member member : follow){%>
-				<tr>	<td><%=member.getIcon() %></td>
-						<td><%=member.getName() %><br><%=member.getProfile() %></td>
-						<td><%=member.getAccountId() %></td>
+				<%// フォローしている人のリストを表示する
+				for(Member mem : follow){%>
+				<tr>	<td><%=mem.getIcon() %></td>
+						<td><%=mem.getName() %><br><%=mem.getProfile() %></td>
+						<td><%=mem.getAccountId() %></td>
 						</tr><%} %>
 
 				</table>

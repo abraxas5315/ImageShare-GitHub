@@ -24,7 +24,7 @@ public class NoneFilter implements ImageEditor
 	@Override
 	public boolean isAcceptable(String value)
 	{
-		return (FILTER_VALUE.equals(value));
+		return true;
 	}
 
 
