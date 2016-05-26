@@ -19,6 +19,7 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 
 	<head>
 	<meta http-equiv="Content-Type" name="author" content="N.Tsukazawa text/html; charset=Windows-31J">
+	<link rel="stylesheet" href="personal.css" type="text/css">
 		<title>フォロー一覧</title>
 	</head>
 
@@ -28,16 +29,14 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 		<div align="center">
 
 			<h3></h3>
-			<p style="margin: 1em;">
 
 			<form name="form1" method="post" action="<%= path %>">
 			<h1>フォロー</h1>
-				<table  cellspacing=1 cellpadding=20>
+				<table>
 				<%// フォローしている人のリストを表示する
 				for(Member mem : follow){%>
-				<tr>	<td><img border="0" src="<%=mem.getIcon() %>" width="128" height="128" alt="イラスト1"></td>
-						<td><a href="personal"><%=mem.getName() %></a><br><%=mem.getProfile() %></td>
-						<td><%=mem.getAccountId() %></td>
+				<tr>	<td><div class="icon"><img border="0" src="<%=mem.getIcon() %>" width="80" height="80" alt="イラスト1"></div></td>
+						<td><a href="personal"><%=mem.getName() %> <%=mem.getAccountId() %></a><br><%=mem.getProfile() %></td>
 						</tr><%} %>
 
 				</table>
