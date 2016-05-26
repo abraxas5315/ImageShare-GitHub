@@ -64,7 +64,7 @@ public class PostServlet extends MainServlet{
 			e.printStackTrace();
 		}
 		//Edit.jspに委譲
-	    RequestDispatcher rd = request.getRequestDispatcher("ImageUpload.jsp");
+	    RequestDispatcher rd = request.getRequestDispatcher("TLServlet.java");
 	    rd.forward(request, response);
 	}
 
