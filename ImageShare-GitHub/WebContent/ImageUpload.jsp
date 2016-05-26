@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
     <%@ page import="servlet.ImageServlet" %>
-    <%String size =(String)session.getAttribute("size"); %>
+    <%String size =(String)request.getAttribute("size"); %>
 <!DOCTYPE html>
 <html>
 	<head>

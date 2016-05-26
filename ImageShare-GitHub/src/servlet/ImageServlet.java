@@ -89,7 +89,7 @@ public class ImageServlet extends MainServlet {
 				};
 			image = editor(request, "filter", editors2, image);
 			imgFile = storage.store(getServletContext(), cType, image);
-			request.setAttribute("dstImage", imgFile);
+			request.setAttribute("dstImage", imgFile.getName());
 			RequestDispatcher rd = request.getRequestDispatcher("Post.jsp");
 			rd.forward(request, response);
 			// HTML書き出し
