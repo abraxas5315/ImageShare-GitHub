@@ -14,6 +14,7 @@
 		<title>ìäçe</title>
 	</head>
 	<body>
+		<jsp:include page="header.jsp"/>
 		<div align="center">
 			<form action="post" method="post">
 				<input type="hidden" name="dstImage" value="<%=path %>">
