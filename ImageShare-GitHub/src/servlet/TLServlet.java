@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import data.Article;
 import data.Member;
-import db.AccountDAO;
 import db.PostsDAO;
 
 /**
@@ -30,17 +30,17 @@ public class TLServlet extends MainServlet {
 		HttpSession session = request.getSession();
 		Member member = null;
 		// ------------デバッグ用ログインセッション---------------
-		try {
-			String userID = "shiomi";
-			String password = "1234";
-			member = new AccountDAO().authentication(userID, password);
-			session.setAttribute("member", member);
-		} catch (SQLException e) {
-			System.out.println("データベース関連エラー");
-		} catch (Exception e) {
-			System.out.println("例外");
-			e.printStackTrace();
-		}
+//		try {
+//			String userID = "shiomi";
+//			String password = "1234";
+//			member = new AccountDAO().authentication(userID, password);
+//			session.setAttribute("member", member);
+//		} catch (SQLException e) {
+//			System.out.println("データベース関連エラー");
+//		} catch (Exception e) {
+//			System.out.println("例外");
+//			e.printStackTrace();
+//		}
 
 		// --------------デバッグ用ログインセッションここまで------------
 
@@ -57,6 +57,10 @@ public class TLServlet extends MainServlet {
 		try {
 			// member を元に個人ページで表示するPersonalDataをとる。
 			tl = dao.selectTL(member);
+			if(tl.size() == 0) {
+				PrintWriter out = response.getWriter();
+				 out.println("<h1>誰も投稿していないかフォロワーがいません</h1>");
+			}
 
 			} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
