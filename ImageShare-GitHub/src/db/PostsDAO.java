@@ -1,12 +1,11 @@
 package db;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import data.Article;
@@ -25,10 +24,17 @@ import data.Member;
  *
  */
 public class PostsDAO{
+	/**
+	 *
+	 * データベースに記事型の投稿内容を追加するクラス
+	 *
+	 * @author s.funo
+	 *
+	 */
 	public void post(Article article) throws SQLException{
 		// クエリ文
 		String query = "INSERT INTO teama.t_article(account_id,image_url,text,date) VALUES(?,?,?,?)";
-
+		//コネクション保持クラス
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
 		try
 		(
@@ -36,19 +42,14 @@ public class PostsDAO{
 				PreparedStatement stmt = con.prepareStatement(query);
 				)
 				{
-			Date dateSql= new Date(article.getDate().getTime());
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(article.getDate());
-			cal.set(Calendar.HOUR_OF_DAY, 0);
-			cal.set(Calendar.MINUTE, 0);
-			cal.set(Calendar.SECOND, 0);
-			cal.set(Calendar.MILLISECOND, 0);
-			java.sql.Date d2 = new java.sql.Date(cal.getTimeInMillis());
+			//データベースに時間格納する為のフォーマット準備
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
 			// コードを設定
 			stmt.setString(1,article.getAccountId());
 			stmt.setString(2, article.getImageUrl());
 			stmt.setString(3, article.getText());
-			stmt.setDate(4, dateSql);
+			stmt.setString(4, sdf.format(article.getDate()));
 			stmt.executeUpdate();
 				}
 	}
@@ -69,10 +70,11 @@ public class PostsDAO{
 
 		//フォローリスト取得用のSQL文
 		StringBuilder str = new StringBuilder();
-		str.append("SELECT t2.account_id , name , my_image , profile ");
+		str.append("SELECT t2.follow_id , name , my_image , profile ");
 		str.append("FROM m_account t1,t_follow t2 ");
-		str.append("WHERE t1.account_id = t2.account_id  ");
-		str.append("AND t2.follow_id= ? ");
+		str.append("WHERE t1.account_id = t2.follow_id  ");
+		str.append("AND t2.account_id= ? ");
+
 		String query = str.toString();
 
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
@@ -84,7 +86,7 @@ public class PostsDAO{
 
 			while (res.next()) {
 				follows.add(new Member(
-						(res.getString("account_id")),
+						(res.getString("follow_id")),
 						(res.getString("name")),
 						(res.getString("my_image")),
 						(res.getString("profile"))
@@ -93,7 +95,7 @@ public class PostsDAO{
 
 			//TL取得用のSQL文
 			str.delete(0, str.length());
-			str.append("SELECT account_id , image_url , text , date FROM t_article WHERE account_id IN(?");
+			str.append("SELECT * FROM t_article WHERE account_id IN(?");
 
 			for(int i=0 ; i<follows.size() ; i++)
 			{
@@ -133,8 +135,9 @@ public class PostsDAO{
 					//記事の格納
 					articles.add(new Article(
 							fMember,
-							(res2.getString("image_url")),
+							(res2.getInt("article_id")),
 							(res2.getString("text")),
+							(res2.getString("image_url")),
 							(res2.getTimestamp("date"))
 							));
 				}
@@ -166,16 +169,17 @@ public class PostsDAO{
 			//コード設定
 			pstmt.setString(1, member.getAccountId());
 
-			ResultSet res2 = pstmt.executeQuery();
+			ResultSet res = pstmt.executeQuery();
 
 			//取得した1個人投稿の格納
-			while (res2.next()) {
+			while (res.next()) {
 				//記事の格納
 				articles.add(new Article(
 						member,
-						(res2.getString("image_url")),
-						(res2.getString("text")),
-						(res2.getTimestamp("date"))
+						(res.getInt("article_id")),
+						(res.getString("text")),
+						(res.getString("image_url")),
+						(res.getTimestamp("date"))
 						));
 			}
 				}
