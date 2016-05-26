@@ -85,7 +85,7 @@ public class PersonalDataDAO {
 
 		// アカウントIDに対するフォロー数、フォロワー数、投稿数を取得するクエリ
 
-		String query = "SELECT * FROM t_article WHERE account_id=?";
+		String query = "SELECT * FROM t_article WHERE account_id=? ORDER BY date desc";
 
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
 		try (Connection con = supplier.getConnection();
