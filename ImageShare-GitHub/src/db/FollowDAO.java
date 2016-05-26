@@ -1,9 +1,9 @@
 package db;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import data.Member;
@@ -27,16 +27,19 @@ public class FollowDAO {
 
 		// データソースの取得
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
+		String query = "SELECT t1.account_id,name,my_image,profile "
+				+ "FROM m_account t1,t_follow t2 "
+				+ "WHERE t1.account_id=t2.follow_id "
+				+ "AND t2.account_id=?";
 		try (
 			// データベースへの接続の取得、ステートメント取得、SQLステートメントの実行
 			Connection con = supplier.getConnection();
-			Statement stmt = con.createStatement();
-			ResultSet res = stmt.executeQuery(
-					"SELECT t1.account_id,name,my_image,profile "
-					+ "FROM m_account t1,t_follow t2 "
-					+ "WHERE t1.account_id=t2.follow_id "
-					+ "AND t2.account_id='aaaa';");
-		) {
+			PreparedStatement stmt = con.prepareStatement(query);)
+			{
+			// 値の設定
+			stmt.setString(1, member.getAccountId());
+
+			ResultSet res = stmt.executeQuery();
 			// 結果の取得
 			while (res.next()) {
 				member = new Member(
