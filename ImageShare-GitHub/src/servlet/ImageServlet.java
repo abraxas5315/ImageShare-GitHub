@@ -87,7 +87,7 @@ public class ImageServlet extends MainServlet {
 			ImageEditor[] editors2 = new ImageEditor[]
 				{
 					new CircleClipper(),
-					//new ImageOverlay(request, createOverlays()),
+					new ImageOverlay(request, createOverlays()),
 					new TextOnImage(),
 					new GradationEffect(),
 					new ImageScaling(),
@@ -136,7 +136,7 @@ public class ImageServlet extends MainServlet {
 	{
 		List<ImageOverlay.OverlayImage> list = new ArrayList<>();
 
-		File fileSample = new File(getServletContext().getRealPath("res/img/") + "/sample.png");
+		File fileSample = new File(getServletContext().getRealPath("sample/") + "/sample.png");
 		final BufferedImage imgSample = ImageIO.read(fileSample);
 		list.add
 		(
@@ -149,7 +149,7 @@ public class ImageServlet extends MainServlet {
 			}
 		);
 
-		File fileCorrect = new File(getServletContext().getRealPath("res/img/") + "/correct.png");
+		File fileCorrect = new File(getServletContext().getRealPath("sample/") + "/correct.png");
 		final BufferedImage imgCorrect = ImageIO.read(fileCorrect);
 		list.add
 		(
@@ -162,7 +162,7 @@ public class ImageServlet extends MainServlet {
 			}
 		);
 
-		File fileWrong = new File(getServletContext().getRealPath("res/img/") + "/wrong.png");
+		File fileWrong = new File(getServletContext().getRealPath("sample/") + "/wrong.png");
 		final BufferedImage imgWrong = ImageIO.read(fileWrong);
 		list.add
 		(
