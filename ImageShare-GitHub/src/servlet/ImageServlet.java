@@ -101,13 +101,6 @@ public class ImageServlet extends MainServlet {
 			request.setAttribute("path", path);
 			RequestDispatcher rd = request.getRequestDispatcher("post.jsp");
 			rd.forward(request, response);
-			// HTML書き出し
-//		}
-//		catch(IllegalStateException ex)
-//		//catch(FileUploadBase.FileSizeLimitExceededException ex)
-//		{
-//			ex.printStackTrace();
-//		}
 	}
 	private BufferedImage editor
 	(
