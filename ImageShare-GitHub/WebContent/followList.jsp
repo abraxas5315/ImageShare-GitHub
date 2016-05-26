@@ -16,17 +16,16 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 
 	<head>
 	<meta http-equiv="Content-Type" name="author" content="N.Tsukazawa text/html; charset=Windows-31J">
-	<link rel="stylesheet" href="personal.css" type="text/css">
+	<link rel="stylesheet" href="follow.css" type="text/css">
 		<title>フォロー一覧</title>
 	</head>
 
-	<body onLoad="document.form1.id.focus();">
+	<body>
 	<jsp:include page="header.jsp"/>
 
 		<div align="center">
 
 			<h1>フォロー</h1>
-			<form name="form1" method="post" action="<%= path %>">
 				<table>
 				<%// フォローしている人のリストを表示する
 				for(Member mem : follow){%>
@@ -35,7 +34,6 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 						</tr><%} %>
 
 				</table>
-			</form>
 		</div>
 	</body>
 </html>
