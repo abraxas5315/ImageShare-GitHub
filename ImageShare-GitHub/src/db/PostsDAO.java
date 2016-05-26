@@ -134,8 +134,8 @@ public class PostsDAO{
 					//記事の格納
 					articles.add(new Article(
 							fMember,
-							(res2.getString("image_url")),
 							(res2.getString("text")),
+							(res2.getString("image_url")),
 							(res2.getTimestamp("date"))
 							));
 				}
@@ -174,8 +174,8 @@ public class PostsDAO{
 				//記事の格納
 				articles.add(new Article(
 						member,
-						(res2.getString("image_url")),
 						(res2.getString("text")),
+						(res2.getString("image_url")),
 						(res2.getTimestamp("date"))
 						));
 			}

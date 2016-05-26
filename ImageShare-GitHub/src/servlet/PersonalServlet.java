@@ -53,7 +53,14 @@ public class PersonalServlet extends MainServlet {
 //		// --------------デバッグ用ログインセッションここまで------------
 
 		// member のセッションを取得
-		member = (Member) session.getAttribute("member");
+
+		// セッションにログインした人以外のセッションが格納されている
+		member = (Member) session.getAttribute("other");
+
+		if(member == null) {
+			// ログイン者のセッション
+			member = (Member) session.getAttribute("member");
+		}
 
 		// DAOをインスタンス化
 		PersonalDataDAO dao = new PersonalDataDAO();

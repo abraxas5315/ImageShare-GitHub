@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,10 @@ public class TLServlet extends MainServlet {
 		try {
 			// member を元に個人ページで表示するPersonalDataをとる。
 			tl = dao.selectTL(member);
+			if(tl.size() == 0) {
+				PrintWriter out = response.getWriter();
+				 out.println("<h1>誰も投稿していないかフォロワーがいません</h1>");
+			}
 
 			} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
