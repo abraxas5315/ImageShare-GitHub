@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html">
+
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
@@ -8,12 +9,11 @@
 	</head>
 	<body><div style="background:darkseagreen">
 		<table>
-		<tr><td>name</td>
-		<td>ID</td>
-		<td><input type = button name = timeline value = "タイムライン" onclick=""></td>
-		<td><input type = button name = post value = "投稿" onclick=""></td>
-		<td><input type = button name = logout value = "ログアウト" onclick=""></td></tr>
-
+		<tr>
+		<td></td>
+		<td><a href="TL"><input type = button name = timeline value = "タイムライン"></a></td>
+		<td><a href="image_upload.jsp"><input type = button name = post value = "投稿" ></a></td>
+		<td><a href="login.jsp"><input type = button name = logout value = "ログアウト" ></a></td></tr>
 		</table>
 	</div></body>
 </html>
