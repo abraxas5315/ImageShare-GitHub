@@ -25,22 +25,22 @@ public class PostsDAO{
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
 		try
 		(
-			Connection con = supplier.getConnection();
-			PreparedStatement stmt = con.prepareStatement(query);
-		)
-		{
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(article.getDate());
-		cal.set(Calendar.HOUR_OF_DAY, 0);
-		cal.set(Calendar.MINUTE, 0);
-		cal.set(Calendar.SECOND, 0);
-		cal.set(Calendar.MILLISECOND, 0);
-		java.sql.Date d2 = new java.sql.Date(cal.getTimeInMillis());
-		// コードを設定
-		stmt.setString(1,article.getAccountId());
-		stmt.setString(2, article.getImageUrl());
-		stmt.setString(3, article.getText());
-		stmt.setDate(4, d2);
+				Connection con = supplier.getConnection();
+				PreparedStatement stmt = con.prepareStatement(query);
+				)
+				{
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(article.getDate());
+			cal.set(Calendar.HOUR_OF_DAY, 0);
+			cal.set(Calendar.MINUTE, 0);
+			cal.set(Calendar.SECOND, 0);
+			cal.set(Calendar.MILLISECOND, 0);
+			java.sql.Date d2 = new java.sql.Date(cal.getTimeInMillis());
+			// コードを設定
+			stmt.setString(1,article.getAccountId());
+			stmt.setString(2, article.getImageUrl());
+			stmt.setString(3, article.getText());
+			stmt.setDate(4, d2);
 			stmt.executeUpdate();
 				}
 	}
@@ -84,32 +84,42 @@ public class PostsDAO{
 			}
 
 			//TL取得用のSQL文
-			query = "SELECT account_id , image_url , text , date FROM t_article WHERE account_id IN(?)";
+			str.delete(0, str.length());
+			str.append("SELECT account_id , image_url , text , date FROM t_article WHERE account_id IN(?");
 
+			for(int i=0 ; i<follows.size() ; i++)
+			{
+				str.append(",").append("?");
+			}
+			str.append(") ");
+			str.append("ORDER BY date DESC");
+			query = str.toString();
 			try (
 					PreparedStatement pstmt2 = con.prepareStatement(query);)
-			{
-				StringBuilder follow = new StringBuilder();
-				//IN句に追加する条件の作成（フォローとログインしているユーザのaccountId）
-				follow.append(member.getAccountId());
-				for(Member f : follows)
-				{
-					follow.append(",").append(f.getAccountId());
-				}
+					{
+
 				// コードを設定
-				pstmt2.setString(1, follow.toString());
+				for(int i=0 ; i<follows.size() ; i++)
+				{
+					pstmt2.setString(i+1, follows.get(i).getAccountId());
+				}
+				pstmt2.setString(follows.size()+1 , member.getAccountId());
 
 				ResultSet res2 = pstmt2.executeQuery();
 				Member fMember = null;
 
 				//取得したＴＬの格納
 				while (res2.next()) {
-					for(Member f : follows){
-						//記事が誰のものと一致しているかをチェック
-						if(res2.getString("") != f.getAccountId())
-						{
-							fMember = f;
-							break;
+
+					//記事が誰のものと一致しているかをチェック
+					fMember = member;
+					if(!res2.getString("account_id").equals(member.getAccountId())){
+						for(Member f : follows){
+							if(res2.getString("account_id").equals(f.getAccountId()))
+							{
+								fMember = f;
+								break;
+							}
 						}
 					}
 					//記事の格納
@@ -117,7 +127,7 @@ public class PostsDAO{
 							fMember,
 							(res2.getString("image_url")),
 							(res2.getString("text")),
-							(res2.getDate("date"))
+							(res2.getTimestamp("date"))
 							));
 				}
 			}
@@ -144,7 +154,7 @@ public class PostsDAO{
 		DataSourceSupplier supplier = DataSourceSupplier.getInstance();
 		try (Connection con = supplier.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(query);)
-		{
+				{
 			//コード設定
 			pstmt.setString(1, member.getAccountId());
 
@@ -157,10 +167,10 @@ public class PostsDAO{
 						member,
 						(res2.getString("image_url")),
 						(res2.getString("text")),
-						(res2.getDate("date"))
+						(res2.getTimestamp("date"))
 						));
 			}
-		}
+				}
 		return articles;
 
 	}
