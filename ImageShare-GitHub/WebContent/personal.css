@@ -24,14 +24,19 @@ body {
 div#wrapper {
     width: 800px;
     margin: 0 auto;
-    border: 1px solid #FF0000;
+    background: white;
 }
 
+div.my-profile{
+	margin-bottom:20px;
+}
 
 div.content{
 	padding-top: 30px;
     padding-left: 100px;
     padding-right: 100px;
+    padding-bottom:10px;
+    border: solid 1px #D8D8D8;
 }
 
 div.message{
@@ -46,8 +51,16 @@ div.account{
 div.icon{
 	padding-left: 4px;
     padding-right: 20px;
+    padding-top: 5px;
     float: left;
 }
+
+.icon img {
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+    border-radius:10px;
+}
+
 a.link{
 	margin-top:20px;
 }
@@ -62,6 +75,12 @@ div.comment{
 div.my-image{
 	padding-left:30px;
 	padding-right:30px;
+}
+
+.my-image img{
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+    border-radius:10px;
 }
 
 div.date{
@@ -85,17 +104,21 @@ table {
 
 }
 
-table.time-line {
-	border: 2px solid blue;
-	width:100%;
+
+.button {
+	color: #333 ;
+	display: block ;
+	background: #f2f2f2 ;
+	text-align: center ;
+	padding: 8px ;
+	font-size: 1rem ;
+	font-weight: 700 ;
+	border: 1px solid #e6e6e6 ;
+	width: 100% ;
+	box-sizing: border-box ;
 }
 
-td.coment {
-	margin-bottom: 50px;
-	border: 1px solid red;
-}
-
-table td.tl-image {
-	margin: 0 auto;
-	text-aline: center;
+.button:hover {
+	cursor: pointer ;
+	background: #e6e6e6 ;
 }

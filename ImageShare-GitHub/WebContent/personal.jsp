@@ -9,7 +9,7 @@ Member member = (Member) session.getAttribute("member");
 List<Article> listArticle = (ArrayList<Article>) request.getAttribute("list.article");
 
 SimpleDateFormat formatA =
-new SimpleDateFormat("yyyy年MM月dd hh時mm分ss秒");
+new SimpleDateFormat("yyyy年MM月dd日 HH時mm分ss秒");
 String formatDate = "";
 
 %>
@@ -26,26 +26,33 @@ String formatDate = "";
 		ヘッダーだよ
 	</div>
 	<div id="wrapper">
-		<table class="user">
-			<tr>
-				<!-- <th> <img border="0" src="<%=member.getIcon()%>" width="128" height="128" alt="イラスト1"> </th>   -->
-				<th> <img border="0" src="images/Desert.jpg" width="128" height="128" alt="イラスト1"> </th>
-				<th> <%=member.getName() %> </th>
-				<th> <%=member.getAccountId() %> </th>
-			</tr>
-		</table>
+		<div class="my-profile">
+			<table class="user">
+				<tr>
+					<!-- <th> <img border="0" src="<%=member.getIcon()%>" width="128" height="128" alt="イラスト1"> </th>   -->
+					<th> <img border="0" src="images/Desert.jpg" width="128" height="128" alt="イラスト1"> </th>
+					<th> <%=member.getName() %> </th>
+					<th> <%=member.getAccountId() %> </th>
+				</tr>
+			</table>
 
-		<table class="follow">
-			<tr>
-				<th> フォロー数 <%=personal.getFollows() %> </th>
-				<th> <form action="ShowFollowServlet" method="POST">
-				<input type="submit" value="フォロー一覧"> </form></th>
-				<th> フォロワー数 <%=personal.getFollowers() %> </th>
-				<th> 投稿数 <%=personal.getArticles() %> </th>
-			</tr>
-		</table>
+			<table class="follow">
+				<tr>
+					<th> フォロー数 <%=personal.getFollows() %> </th>
+					<th> <form action="ShowFollowServlet" method="POST">
+					<input type="submit" value="フォロー一覧"> </form></th>
+					<th> フォロワー数 <%=personal.getFollowers() %> </th>
+					<th> 投稿数 <%=personal.getArticles() %> </th>
+				</tr>
+			</table>
 
-		<p> <%=member.getProfile() %></p>
+			<p> <%=member.getProfile() %></p>
+		</div>
+
+
+		<div class="new">
+			<a href="javascript:location.reload();" id="new" class="button">最新情報を取得する</a>
+		</div>
 
 		<%for(int i=0; i<listArticle.size(); i++){
 		Article la = listArticle.get(i);
@@ -91,7 +98,7 @@ String formatDate = "";
 				</div>
 			</div>
 
-			<hr>
+
 
 		<%
 		}
