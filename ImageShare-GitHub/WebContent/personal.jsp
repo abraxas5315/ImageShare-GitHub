@@ -20,11 +20,11 @@ String formatDate = "";
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
 <link rel="stylesheet" href="personal.css" type="text/css">
 <title>個人ページ画面</title>
+
 </head>
 <body>
-	<div align="center">
-		ヘッダーだよ
-	</div>
+<jsp:include page="header.jsp"/>
+
 	<div id="wrapper">
 		<div class="my-profile">
 			<table class="user">
@@ -55,7 +55,7 @@ String formatDate = "";
 		</div>
 
 		<%for(int i=0; i<listArticle.size(); i++){
-		Article la = listArticle.get(i);
+		 Article la = listArticle.get(i);
 		%>
 
 			<div class="content">
@@ -66,16 +66,39 @@ String formatDate = "";
 					</div>
 
 					<div class="account">
-						<a class="link" href="./userid">
-							<span class="name">
-						 		 <%=la.getName() %>
-							</span>
 
-							<strong class="user-id">
-								ID <%=la.getAccountId() %>
-							</strong>
+						<span class="name">
+					 		 <%=la.getName() %>
+						</span>
 
-						</a>
+						<strong class="user-id">
+							ID <%=la.getAccountId() %>
+						</strong>
+
+
+
+
+    <a href="#" onclick="OnLinkClick();">Exec1</a><br />
+    <a href="javascript:void(0);" onclick="OnLinkClick();">Exec2</a>
+    <div id="output"></div>
+
+      <script language="javascript" type="text/javascript">
+        function OnLinkClick() {
+            target = document.getElementById("output");
+		   <% session.setAttribute("other", la.getMember());
+		  	 Member other = (Member) session.getAttribute("other");
+		   %>
+		   target.innerHTML = "<%=other.getAccountId()%>"
+            return false;
+        }
+    </script>
+
+
+
+
+
+
+
 					</div>
 
 					<div class="comment">
