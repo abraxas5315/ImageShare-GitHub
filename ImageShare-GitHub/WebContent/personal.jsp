@@ -1,12 +1,16 @@
 
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
- <%@ page import="data.*, java.util.ArrayList, java.util.List"%>
+ <%@ page import="data.*, java.util.ArrayList, java.util.List, java.text.SimpleDateFormat"%>
 
 <%
 PersonalData personal =  (PersonalData) request.getAttribute("personalData");
 Member member = (Member) session.getAttribute("member");
 List<Article> listArticle = (ArrayList<Article>) request.getAttribute("list.article");
+
+SimpleDateFormat formatA =
+new SimpleDateFormat("yyyy”NMMŒŽdd hhŽžmm•ªss•b");
+String formatDate = "";
 
 %>
 
@@ -70,8 +74,8 @@ List<Article> listArticle = (ArrayList<Article>) request.getAttribute("list.arti
 
 						<%=la.getText() %>
 						<div class="date">
-
-						<%=la.getDate() %>
+						<% formatDate = formatA.format(la.getDate()); %>
+						<%=formatDate %>
 						</div>
 
 					</div>
