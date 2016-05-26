@@ -15,7 +15,7 @@ h1,h2,h3,h4.h5,h6,p,ul,li,dl,dt,dd,ol,blockquote {
 body {
 	margin: 0 auto;
 	padding: 0;
-	background: #C0DEED url(img/bg_clouds.png) repeat-x 0 0;
+	background: #C0DEED;
 	color: #333333;
 	font-size: 80%;
 	font-family: Verdana;
@@ -25,6 +25,49 @@ div#wrapper {
     width: 800px;
     margin: 0 auto;
     border: 1px solid #FF0000;
+}
+
+
+div.content{
+	padding-top: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+div.message{
+	border:1px solid #FF0000;
+	margin-bottom: 20px;
+}
+
+div.account{
+	padding-bottom:3px;
+}
+
+div.icon{
+	padding-left: 4px;
+    padding-right: 20px;
+    float: left;
+}
+a.link{
+	margin-top:20px;
+}
+
+div.comment{
+	position: relative;
+	width:100%;
+	min-height:70px;
+
+}
+
+div.my-image{
+	padding-left:30px;
+	padding-right:30px;
+}
+
+div.date{
+	position: absolute;
+	bottom: 4px;
+	right:4px;
 }
 
 p {
