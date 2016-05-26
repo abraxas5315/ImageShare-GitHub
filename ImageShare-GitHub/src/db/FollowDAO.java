@@ -32,9 +32,10 @@ public class FollowDAO {
 			Connection con = supplier.getConnection();
 			Statement stmt = con.createStatement();
 			ResultSet res = stmt.executeQuery(
-					"SELECT t1.account_id,t1.name,t1.my_image,t1.profile "
-					+ "FROM teama.m_account t1,teama.t_follow t2 "
-					+ "WHERE t1.account_id=t2.account_id");
+					"SELECT t1.account_id,name,my_image,profile "
+					+ "FROM m_account t1,t_follow t2 "
+					+ "WHERE t1.account_id=t2.follow_id "
+					+ "AND t2.account_id='aaaa';");
 		) {
 			// 結果の取得
 			while (res.next()) {
