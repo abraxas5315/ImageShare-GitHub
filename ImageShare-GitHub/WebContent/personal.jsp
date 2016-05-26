@@ -38,7 +38,8 @@ String formatDate = "";
 		<table class="follow">
 			<tr>
 				<th> フォロー数 <%=personal.getFollows() %> </th>
-				<th>  <input type="submit" value="フォロー一覧"> </th>
+				<th> <form action="ShowFollowServlet" method="POST">
+				<input type="submit" value="フォロー一覧"> </form></th>
 				<th> フォロワー数 <%=personal.getFollowers() %> </th>
 				<th> 投稿数 <%=personal.getArticles() %> </th>
 			</tr>
