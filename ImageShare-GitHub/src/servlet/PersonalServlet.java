@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import data.Article;
 import data.Member;
 import data.PersonalData;
+import db.AccountDAO;
 import db.PersonalDataDAO;
 
 /**
@@ -36,6 +37,8 @@ public class PersonalServlet extends MainServlet {
 		// セッションの取得
 		HttpSession session = request.getSession();
 		Member member = null;
+		String otherId = "";
+
 //		// ------------デバッグ用ログインセッション---------------
 //		Member member = null;
 //		try {
@@ -54,12 +57,20 @@ public class PersonalServlet extends MainServlet {
 
 		// member のセッションを取得
 
-		// セッションにログインした人以外のセッションが格納されている
-		member = (Member) session.getAttribute("other");
+		// 押下したユーザのID
+		otherId = request.getParameter("otherId");
 
-		if(member == null) {
+		if(otherId == null) {
 			// ログイン者のセッション
 			member = (Member) session.getAttribute("member");
+		} else {
+			AccountDAO adao = new AccountDAO();
+			try {
+				member = adao.selectByAccount(otherId);
+			} catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
 		}
 
 		// DAOをインスタンス化

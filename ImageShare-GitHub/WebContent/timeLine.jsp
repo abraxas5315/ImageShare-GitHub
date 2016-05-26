@@ -42,12 +42,10 @@ String formatDate = "";
 								ID <%=la.getAccountId() %>
 							</strong>
 
-	<form name="fm">
-	    <a href="#" onclick="OnLinkClick();">Exec1</a><br />
-	    <a href="javascript:void(0);" onclick="OnLinkClick();">Exec2</a>
-	    <div id="output"></div>
-		<input type="hidden" name="hidden1" value="<%=la.getArticleId() %>">
-	</form>
+<form action="/personal" method="post">
+<p>○○<input type="submit" name="名前" value="個人ページへ"></p>
+<p>○○<input type=”hidden” name="名前" value= "<%=la.getAccountId()%>"></p>
+</form>
 
 
 					</div>
@@ -78,18 +76,7 @@ String formatDate = "";
 		}
 		%>
 
-     <script language="javascript" type="text/javascript">
-        function OnLinkClick() {
 
-        	 // document.fm.hidden1.value;
-            target = document.getElementById("output");
-		   <% session.setAttribute("other", timeLine.get(1).getMember());
-		  	 Member other = (Member) session.getAttribute("other");
-		   %>
-		   target.innerHTML = "<%=other.getAccountId()%>"
-            return false;
-        }
-    </script>
 
 </body>
 </html>
