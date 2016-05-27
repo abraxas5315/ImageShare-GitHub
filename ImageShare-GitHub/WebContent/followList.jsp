@@ -17,7 +17,7 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 
 	<head>
 	<meta http-equiv="Content-Type" name="author" content="N.Tsukazawa text/html; charset=Windows-31J">
-	<link rel="stylesheet" href="personal.css" type="text/css">
+	<link rel="stylesheet" href="follow.css" type="text/css">
 		<title>フォロー一覧</title>
 	</head>
 
