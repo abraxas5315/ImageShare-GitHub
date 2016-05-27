@@ -12,6 +12,9 @@
 <title>Title</title>
 </head>
 <body>
+<% if(member == null) {
+request.getRequestDispatcher("login.jsp").forward(request,response);
+}%>
 	<div style="background: darkseagreen">
 		<table>
 			<tr>
