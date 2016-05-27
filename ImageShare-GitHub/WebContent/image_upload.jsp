@@ -3,6 +3,7 @@
 <%@ page import="imageProcess.*" %>
 <%@ page import="servlet.ImageServlet" %>
 <%String sizeString =(String)request.getAttribute("size");
+String back = request.getParameter("back");
 	//int size = Integer.parseInt(sizeString);
 %>
 <!DOCTYPE html>
@@ -79,7 +80,11 @@
 						</th></tr>
 					</table>
 					<br><br>
-					<input type="file" name="filename" required >
+					<%if(back != null){ %>
+					<input type="file" name="filename" required value = "<%=back%>">
+					<%} else{ %>
+					<input type="file" name="filename" required>
+					<%} %>
 					<input type="submit" value ="画像をアップロード">
 					<br><br><br>
 			</form>
