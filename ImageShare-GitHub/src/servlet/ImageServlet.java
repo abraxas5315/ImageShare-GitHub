@@ -29,6 +29,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import data.Member;
+
 
 /**
  * Servlet implementation class ImageServlet
@@ -110,9 +112,9 @@ public class ImageServlet extends MainServlet {
 			image = editor(request, "filter", editors2, image);
 
 			//ファイルパスの作成と保存
-			//Member member = (Member)session.getAttribute("member");
-			//String id = member.getAccountId();
-			String id = "aaaa";
+			Member member = (Member)session.getAttribute("member");
+			String id = member.getAccountId();
+			//String id = "aaaa";
 			imgFile = storage.store(getServletContext(), cType, image,id);
 
 			//リクエストに画像情報保存
