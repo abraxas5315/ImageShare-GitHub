@@ -17,6 +17,7 @@ String formatDate = "";
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
 
+
 <link rel="stylesheet" href="timeline.css" type="text/css">
 <title>タイムライン</title>
 </head>
@@ -64,19 +65,11 @@ String formatDate = "";
 					</div>
 
 					<div class="account">
-							<span class="name">
-						 		 <%=la.getName() %>
-							</span>
 
-							<strong class="user-id">
-								ID <%=la.getAccountId() %>
-							</strong>
-
-							<form action="personal" method="post">
-								<input type="submit" name="名前" value="個人ページへ">
+							<form class="account" action="personal" method="post">
+								<input class="name" type="submit" name="名前" value= "<%=la.getName() %> ID: <%=la.getAccountId() %>">
 								<input class="hidden" type=”hidden” name="otherId" value="<%=la.getAccountId()%>">
 							</form>
-
 
 					</div>
 

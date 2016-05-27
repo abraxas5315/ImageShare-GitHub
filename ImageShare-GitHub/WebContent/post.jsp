@@ -25,8 +25,12 @@
 				</table>
 				<br>
 				<br>
+				<input type="button" onClick="document.formB.submit();" value="–ß‚é">
 				<input type = submit value ="“Še">
 				<br><br><br>
+			</form>
+			<form action ="image_upload.jsp" name ="formB">
+					<input type="hidden" name="back" value="path">
 			</form>
 		</div>
 	</body>
