@@ -5,7 +5,7 @@
 
 <%
 PersonalData personal =  (PersonalData) request.getAttribute("personalData");
-Member member = (Member) session.getAttribute("member");
+Member member = (Member) request.getAttribute("other");
 List<Article> listArticle = (ArrayList<Article>) request.getAttribute("list.article");
 
 SimpleDateFormat formatA =
@@ -75,30 +75,6 @@ String formatDate = "";
 							ID <%=la.getAccountId() %>
 						</strong>
 
-
-
-
-    <a href="#" onclick="OnLinkClick();">Exec1</a><br />
-    <a href="javascript:void(0);" onclick="OnLinkClick();">Exec2</a>
-    <div id="output"></div>
-
-      <script language="javascript" type="text/javascript">
-        function OnLinkClick() {
-            target = document.getElementById("output");
-		   <% session.setAttribute("other", la.getMember());
-		  	 Member other = (Member) session.getAttribute("other");
-		   %>
-		   target.innerHTML = "<%=other.getAccountId()%>"
-            return false;
-        }
-    </script>
-
-
-
-
-
-
-
 					</div>
 
 					<div class="comment">
@@ -116,7 +92,7 @@ String formatDate = "";
 
 				<div class="my-image">
 
-					<img border="0" src="images/Desert.jpg" width="500" height="500" alt="イラスト1">
+					<img border="0" src="<%=la.getImageUrl()%>" width="500" alt="イラスト1">
 
 				</div>
 			</div>
