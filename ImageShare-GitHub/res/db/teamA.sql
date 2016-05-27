@@ -1,8 +1,5 @@
 /* DBçÏê¨ */
-DROP TABLE IF EXISTS t_article;
-DROP TABLE IF EXISTS t_follow;
-DROP TABLE IF EXISTS m_account;
-DROP DATABASE teama;
+DROP DATABASE IF EXISTS teama;
 CREATE DATABASE teama CHARACTER SET sjis COLLATE sjis_japanese_ci;
 
 /* AUTOCOMMITñ≥å¯ */
@@ -11,12 +8,16 @@ SET AUTOCOMMIT=0;
 /* DBëIë */
 USE teamA;
 
+DROP TABLE IF EXISTS t_article;
+DROP TABLE IF EXISTS t_follow;
+DROP TABLE IF EXISTS m_account;
+
 CREATE TABLE m_account(
 		account_id                    		VARCHAR(16)		 NOT NULL		 PRIMARY KEY,
 		pass                          		CHARACTER(16)		 NOT NULL,
 		name                          		VARCHAR(32)		 NOT NULL,
 		my_image                      		VARCHAR(32)		 NOT NULL,
-		profile                       		VARCHAR(32)		 NULL
+		profile                       		VARCHAR(255)		 NOT NULL
 )ENGINE = INNODB;
 
 CREATE TABLE t_follow(
