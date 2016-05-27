@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -64,8 +63,9 @@ public class PostServlet extends MainServlet{
 			e.printStackTrace();
 		}
 		//TLサーブレットに委譲
-	    RequestDispatcher rd = request.getRequestDispatcher("TL");
-	    rd.forward(request, response);
+//	    RequestDispatcher rd = request.getRequestDispatcher("TL");
+//	    rd.forward(request, response);
+	    response.sendRedirect("TL");
 	}
 
 
