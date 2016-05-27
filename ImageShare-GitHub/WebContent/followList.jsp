@@ -34,7 +34,7 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 				for(Member mem : follow){%>
 				<tr>	<td><div class="icon"><img border="0" src="<%=mem.getIcon() %>" width="80" height="80" alt="イラスト1"></div></td>
 						<td><form action="personal" method="post">
-							<input class="name" type="submit" name="名前" value="<%=mem.getName() %> : <%=mem.getAccountId() %>">
+							<input class="name" type="submit" name="名前" value="<%=mem.getName() %> ID: <%=mem.getAccountId() %>">
 							<input type="hidden" name="otherId" value="<%=mem.getAccountId() %>"></form>
 							<br><%=mem.getProfile() %></td>
 						</tr><%}} %>

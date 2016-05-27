@@ -18,7 +18,7 @@ request.getRequestDispatcher("login.jsp").forward(request,response);
 	<div style="background: darkseagreen">
 		<table>
 			<tr>
-				<td><a href="personal"><%=member.getName()%>&nbsp;&nbsp;<%=member.getAccountId()%></a></td>
+				<td><a href="personal"><%=member.getName()%>&nbsp;ID:&nbsp;<%=member.getAccountId()%></a></td>
 				<td><a href="TL"><input type=button name=timeline
 						value="ƒ^ƒCƒ€ƒ‰ƒCƒ“"></a></td>
 				<td><a href="image_upload.jsp"><input type=button name=post
