@@ -9,10 +9,13 @@
 <html>
 	<head>
 		<meta charset="Windows-31J">
+		<link rel="stylesheet" href="personal.css" type="text/css">
 		<title>投稿</title>
+
 	</head>
 	<body>
-		<div align="center">
+		<jsp:include page="header.jsp"/>
+		<div align="center" id="wrapper">
 			<%if(sizeString != null){ %>
 				 <font color="red">ファイルサイズを2MBまでにしてください。
 				</font>
