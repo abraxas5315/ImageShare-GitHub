@@ -93,6 +93,12 @@ table {
 
 }
 
+table.follow{
+	margin:0 auto;
+	width:500px;
+	border:solid 1px #D8D8D8;
+	background:white;
+}
 
 .button {
 	color: #333 ;
