@@ -59,8 +59,8 @@ public class ImageServlet extends MainServlet {
 	    HttpSession session = request.getSession();
 
 	    String url ="post.jsp";
-	   // String key = (String)session.getAttribute("key");
-	    //if(key.equals("imageUpload")){
+	   String key = (String)session.getAttribute("key");
+	    if(key.equals("imageUpload")){
 			File imgFile = null;
 			Part p = request.getPart("filename");
 			String cType = p.getContentType();
@@ -122,7 +122,7 @@ public class ImageServlet extends MainServlet {
 			session.setAttribute("dstImage", dstImage);
 			String path =ImageFileStorage.getRelativeImageDir(id);
 			session.setAttribute("path", path);
-	    //}
+	    }
 			//post.jspに委譲
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
