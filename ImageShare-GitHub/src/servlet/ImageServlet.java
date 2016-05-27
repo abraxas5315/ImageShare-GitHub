@@ -29,6 +29,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import data.Member;
+
 
 /**
  * Servlet implementation class ImageServlet
@@ -57,8 +59,8 @@ public class ImageServlet extends MainServlet {
 	    HttpSession session = request.getSession();
 
 	    String url ="post.jsp";
-	   // String key = (String)session.getAttribute("key");
-	    //if(key.equals("imageUpload")){
+	   String key = (String)session.getAttribute("key");
+	    if(key.equals("imageUpload")){
 			File imgFile = null;
 			Part p = request.getPart("filename");
 			String cType = p.getContentType();
@@ -110,9 +112,9 @@ public class ImageServlet extends MainServlet {
 			image = editor(request, "filter", editors2, image);
 
 			//ファイルパスの作成と保存
-			//Member member = (Member)session.getAttribute("member");
-			//String id = member.getAccountId();
-			String id = "aaaa";
+			Member member = (Member)session.getAttribute("member");
+			String id = member.getAccountId();
+			//String id = "aaaa";
 			imgFile = storage.store(getServletContext(), cType, image,id);
 
 			//リクエストに画像情報保存
@@ -120,7 +122,7 @@ public class ImageServlet extends MainServlet {
 			session.setAttribute("dstImage", dstImage);
 			String path =ImageFileStorage.getRelativeImageDir(id);
 			session.setAttribute("path", path);
-	    //}
+	    }
 			//post.jspに委譲
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);

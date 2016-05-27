@@ -12,7 +12,7 @@ session.setAttribute("key", "imageUpload");
 <html>
 	<head>
 		<meta charset="Windows-31J">
-		<link rel="stylesheet" href="personal.css" type="text/css">
+		<link rel="stylesheet" href="post.css" type="text/css">
 		<title>投稿</title>
 
 	</head>
