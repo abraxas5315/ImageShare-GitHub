@@ -26,7 +26,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
+import data.Member;
 
 
 /**
@@ -53,9 +56,8 @@ public class ImageServlet extends MainServlet {
 		// TODO Auto-generated method stub
 		ImageFileStorage storage = new ImageFileStorage();
 		//セッションの取得
-	    //HttpSession session = request.getSession();
-//		try
-//		{
+	    HttpSession session = request.getSession();
+
 			File imgFile = null;
 			Part p = request.getPart("filename");
 			String cType = p.getContentType();
@@ -107,9 +109,8 @@ public class ImageServlet extends MainServlet {
 			image = editor(request, "filter", editors2, image);
 
 			//ファイルパスの作成と保存
-			//Member member = (Member)session.getAttribute("member");
-			//String id = member.getAccountId();
-			String id = "aaaa";
+			Member member = (Member)session.getAttribute("member");
+			String id = member.getAccountId();
 			imgFile = storage.store(getServletContext(), cType, image,id);
 
 			//リクエストに画像情報保存
