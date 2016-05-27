@@ -65,10 +65,10 @@
 							</select>
 							<br><input type = "radio" name="filter" value="<%= TextOnImage.FILTER_VALUE %>">
 						</th>
-						<th><!--<select name="<%= GradationEffect.PARAM_NAME_GRADATION_COLOR %>">
+						<th><select name="<%= GradationEffect.PARAM_NAME_GRADATION_COLOR %>">
 								  <option value="black">ブラック</option>
 								<option value="red">レッド</option>
-							</select> --><br>
+							</select><br>
 							<input type = "radio" name="filter" value="<%= GradationEffect.FILTER_VALUE %>"></th>
 						<th>
 								<select name="<%= ImageOverlay.PARAM_NAME_IMG_OVERLAY %>">
