@@ -3,9 +3,11 @@
 <%@ page import="servlet.ImageServlet" %>
 <%
 	// ƒpƒX‚Ìì¬
-	String dstImg =(String)request.getAttribute("dstImage");
-	String path =(String)request.getAttribute("path");
+	String dstImg =(String)session.getAttribute("dstImage");
+	String path =(String)session.getAttribute("path");
 	path += dstImg;
+	//‰æ‘œ‚Ì“ñd»¶–hŽ~—p
+	session.setAttribute("key", "post");
 %>
 <!DOCTYPE html>
 <html>

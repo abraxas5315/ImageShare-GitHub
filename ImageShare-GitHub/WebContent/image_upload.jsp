@@ -4,6 +4,8 @@
 <%@ page import="servlet.ImageServlet" %>
 <%String sizeString =(String)request.getAttribute("size");
 String back = request.getParameter("back");
+//‰æ‘œ‚Ì“ñd»¶–hŽ~—p
+session.setAttribute("key", "imageUpload");
 	//int size = Integer.parseInt(sizeString);
 %>
 <!DOCTYPE html>
