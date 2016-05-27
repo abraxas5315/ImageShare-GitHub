@@ -83,6 +83,7 @@ div.account{
 	padding-bottom:3px;
 }
 
+
 div.icon{
 	padding-left: 4px;
     padding-right: 20px;
@@ -146,6 +147,25 @@ div.date{
 .button:hover {
 	cursor: pointer ;
 	background: #e6e6e6 ;
+}
+
+input.name:hover{
+   color: #1b95e0;
+   text-decoration:underline;
+}
+
+input.name {
+	color: black ;
+	background: none ;
+	text-align: center ;
+	padding: 8px ;
+	font-size: 1rem ;
+	font-weight: 700 ;
+	border: none;
+	box-sizing: border-box ;
+	outline: none;
+	cursor: pointer;
+
 }
 
 
