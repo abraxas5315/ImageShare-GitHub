@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import data.Member;
+import db.AccountDAO;
 import db.DataSourceSupplier;
 import db.FollowDAO;
 
@@ -46,6 +48,21 @@ public class ShowFollowServlet extends MainServlet {
 
     	// memberのセッションを取得
 		member = (Member) session.getAttribute("member");
+		String otherId = request.getParameter("otherId");
+
+		if(otherId == null) {
+			// ログイン者のセッションを取得
+			member = (Member) session.getAttribute("member");
+		} else {
+			AccountDAO adao = new AccountDAO();
+			try {
+				// 見ているページのユーザーのセッションを取得
+				member = adao.selectByAccount(otherId);
+			} catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
+		}
 
 		// DAOをインスタンス化
 		FollowDAO dao = new FollowDAO();
