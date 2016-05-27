@@ -1,13 +1,12 @@
-/* DBì¬ */
+/* DBä½œæˆ */
 DROP DATABASE IF EXISTS teama;
 CREATE DATABASE teama CHARACTER SET sjis COLLATE sjis_japanese_ci;
 
-/* AUTOCOMMIT–³Œø */
+/* AUTOCOMMITç„¡åŠ¹ */
 SET AUTOCOMMIT=0;
 
-/* DB‘I‘ð */
+/* DBé¸æŠž */
 USE teamA;
-
 DROP TABLE IF EXISTS t_article;
 DROP TABLE IF EXISTS t_follow;
 DROP TABLE IF EXISTS m_account;
@@ -23,7 +22,7 @@ CREATE TABLE m_account(
 CREATE TABLE t_follow(
 		follow_id                     		VARCHAR(16)		 NOT NULL,
 		account_id                    		VARCHAR(16)		 NOT NULL,
-  PRIMARY KEY (follow_id, account_id), 
+  PRIMARY KEY (follow_id, account_id),
   FOREIGN KEY (account_id) REFERENCES m_account (account_id)
 )ENGINE = INNODB;
 
@@ -38,22 +37,22 @@ CREATE TABLE t_article(
 
 CREATE INDEX IDX_t_article_1 ON t_article (account_id);
 
-/* ‰ïˆõî•ñƒ}ƒXƒ^INSERT */
-INSERT INTO m_account VALUES('shiomi','shiomi','‰–Œ©','sample/a.jpg','Š”Ž®‰ïŽÐƒqƒ…[ƒ}ƒ“ƒVƒXƒeƒ€');
-INSERT INTO m_account VALUES('kawashima','kawashima','ì“‡','sample/b.jpg','Š”Ž®‰ïŽÐƒPƒAƒŠƒbƒcEƒAƒ“ƒhEƒp[ƒgƒi[ƒY');
-INSERT INTO m_account VALUES('funo','funo','•z–ì','sample/c.jpg','Š”Ž®‰ïŽÐƒPƒAƒŠƒbƒcEƒAƒ“ƒhEƒp[ƒgƒi[ƒY');
-INSERT INTO m_account VALUES('tukazawa','tukazawa','’ËàV','sample/d.jpg','Š”Ž®‰ïŽÐƒŒƒxƒ‹ƒtƒ@ƒCƒu');
+/* ä¼šå“¡æƒ…å ±ãƒžã‚¹ã‚¿INSERT */
+INSERT INTO m_account VALUES('shiomi','shiomi','å¡©è¦‹','sample/a.jpg','æ ªå¼ä¼šç¤¾ãƒ’ãƒ¥ãƒ¼ãƒžãƒ³ã‚·ã‚¹ãƒ†ãƒ ');
+INSERT INTO m_account VALUES('kawashima','kawashima','å·å³¶','sample/b.jpg','æ ªå¼ä¼šç¤¾ã‚±ã‚¢ãƒªãƒƒãƒ„ãƒ»ã‚¢ãƒ³ãƒ‰ãƒ»ãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã‚º');
+INSERT INTO m_account VALUES('funo','funo','å¸ƒé‡Ž','sample/c.jpg','æ ªå¼ä¼šç¤¾ã‚±ã‚¢ãƒªãƒƒãƒ„ãƒ»ã‚¢ãƒ³ãƒ‰ãƒ»ãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã‚º');
+INSERT INTO m_account VALUES('tukazawa','tukazawa','å¡šæ¾¤','sample/d.jpg','æ ªå¼ä¼šç¤¾ãƒ¬ãƒ™ãƒ«ãƒ•ã‚¡ã‚¤ãƒ–');
 
-/* ƒtƒHƒ[ƒe[ƒuƒ‹INSERT */
-INSERT INTO t_follow VALUES('shiomi','kawashima');
-INSERT INTO t_follow VALUES('shiomi','funo');
-INSERT INTO t_follow VALUES('shiomi','tukazawa');
-INSERT INTO t_follow VALUES('tukazawa','funo');
-INSERT INTO t_follow VALUES('tukazawa','kawashima');
+/* ãƒ•ã‚©ãƒ­ãƒ¼ãƒ†ãƒ¼ãƒ–ãƒ«INSERT */
 INSERT INTO t_follow VALUES('funo','shiomi');
+INSERT INTO t_follow VALUES('shiomi','funo');
+INSERT INTO t_follow VALUES('tukazawa','funo');
+INSERT INTO t_follow VALUES('shiomi','tukazawa');
+INSERT INTO t_follow VALUES('funo','tukazawa');
+INSERT INTO t_follow VALUES('kawashima','tukazawa');
 
-/* “Šeƒe[ƒuƒ‹INSERT */
-INSERT INTO t_article VALUES(1,'shiomi','sample/g.jpg','ƒeƒXƒg','2016-5-26 15:00:00');
+/* æŠ•ç¨¿ãƒ†ãƒ¼ãƒ–ãƒ«INSERT */
+INSERT INTO t_article VALUES(1,'shiomi','sample/g.jpg','ãƒ†ã‚¹ãƒˆ','2016-5-26 15:00:00');
 
-/* ƒRƒ~ƒbƒg */
+/* ã‚³ãƒŸãƒƒãƒˆ */
 commit;
