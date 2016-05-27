@@ -27,11 +27,11 @@ name="author" content="kawashima">
 			<table>
 				<tr>
 					<td align="left">&nbsp;&nbsp;ユーザID：</td>
-					<td align="left"><input type="text" name="USERID"></td>
+					<td align="left"><input type="text" name="USERID" required></td>
 				</tr>
 				<tr>
 					<td align="left">パスワード：</td>
-					<td align="left"><input type="password" name="PASSWORD"></td>
+					<td align="left"><input type="password" name="PASSWORD" required></td>
 				</tr>
 			</table>
 			<br> <input type="submit" value="ログイン" name="ACTION">
