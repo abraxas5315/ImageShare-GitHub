@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import data.Article;
 import data.Member;
 import data.PersonalData;
+import db.AccountDAO;
 import db.PersonalDataDAO;
 
 /**
@@ -36,6 +37,8 @@ public class PersonalServlet extends MainServlet {
 		// セッションの取得
 		HttpSession session = request.getSession();
 		Member member = null;
+		String otherId = "";
+
 //		// ------------デバッグ用ログインセッション---------------
 //		Member member = null;
 //		try {
@@ -52,14 +55,22 @@ public class PersonalServlet extends MainServlet {
 //
 //		// --------------デバッグ用ログインセッションここまで------------
 
-		// member のセッションを取得
+		// 押下したユーザのID
+		otherId = request.getParameter("otherId");
+		System.out.println(otherId);
 
-		// セッションにログインした人以外のセッションが格納されている
-		member = (Member) session.getAttribute("other");
-
-		if(member == null) {
+		if(otherId == null) {
 			// ログイン者のセッション
 			member = (Member) session.getAttribute("member");
+		} else {
+			AccountDAO adao = new AccountDAO();
+			System.out.println("chek");
+			try {
+				member = adao.selectByAccount(otherId);
+			} catch (SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+			}
 		}
 
 		// DAOをインスタンス化
@@ -94,6 +105,9 @@ public class PersonalServlet extends MainServlet {
 
 		// フォロー数などが格納されている personalDataをrequestスコープに格納
 		request.setAttribute("personalData", personalData);
+
+		// アカウント情報をrequestスコープに格納
+		request.setAttribute("other", member);
 
 		// 過去の投稿リストをrequestスコープに格納
 		request.setAttribute("list.article", la);
