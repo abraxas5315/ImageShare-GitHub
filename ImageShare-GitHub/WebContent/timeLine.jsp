@@ -16,10 +16,12 @@ String formatDate = "";
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
+
 <link rel="stylesheet" href="timeline.css" type="text/css">
 <title>タイムライン</title>
 </head>
 <body>
+
 <jsp:include page="header.jsp"/>
 
 
