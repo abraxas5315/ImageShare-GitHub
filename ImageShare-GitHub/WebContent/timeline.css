@@ -1,5 +1,14 @@
 @CHARSET "Windows-31J";
 
+h1,h2,h3,h4.h5,h6,p,ul,li,dl,dt,dd,ol,blockquote {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	font-weight: normal;
+	line-height: 1.0;
+	list-style: none;
+}
+
 
 body {
 	margin: 0 auto;
@@ -9,23 +18,60 @@ body {
 	font-family: Verdana;
 }
 
-div#wrapper {
-    width: 800px;
-    margin: 0 auto;
-    background: white;
+
+div.my-info{
+	position:absolute;
+	top:50px;
+	margin-bottom:20px;
+	margin-left:40px;
+	background: white;
+	width:300px;
+	height: 250px;
+	border: solid 1px #D8D8D8;
+	border-radius: 20px ;
+	float: left;
+
+}
+
+p.name-style{
+	padding:7px;
+}
+
+div.user{
+	height:80px;
+	font-size:80%;
 }
 
 div.my-profile{
-	margin-bottom:20px;
+	margin:10px;
 	font-size:80%;
+
 }
+
+div.new{
+	margin:10px;
+}
+
+div#wrapper {
+	float: left;
+    width: 800px;
+    margin: 0 auto;
+    background: white;
+    position:absolute;
+	top: 50px;
+    left: 400px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+
 
 div.content{
 	padding-top: 30px;
     padding-left: 100px;
     padding-right: 100px;
     padding-bottom:10px;
-    border: solid 1px #D8D8D8;
+
 }
 
 div.message{
@@ -54,6 +100,10 @@ a.link{
 	margin-top:20px;
 }
 
+.hidden{
+	display:none;
+}
+
 div.comment{
 	position: relative;
 	width:100%;
@@ -78,24 +128,7 @@ div.date{
 	right:4px;
 }
 
-p {
-	border-style: solid;
-	border-width: 1px;
-	margin-left: 100px;
-    margin-right: 100px;
-    padding-bottom: 100px;
-    padding-top: 5px;
-    padding-left: 10px;
-}
 
-
-
-table.follow{
-	margin:0 auto;
-	width:500px;
-	border:solid 1px #D8D8D8;
-	background:white;
-}
 
 .button {
 	color: #333 ;
@@ -114,3 +147,5 @@ table.follow{
 	cursor: pointer ;
 	background: #e6e6e6 ;
 }
+
+

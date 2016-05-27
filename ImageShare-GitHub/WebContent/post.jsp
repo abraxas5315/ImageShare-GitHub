@@ -16,14 +16,17 @@
 	</head>
 	<body>
 	<jsp:include page="header.jsp"/>
-		<div align="center">
+		<div align="center" id="wrapper">
 			<form action="post" method="post">
 				<input type="hidden" name="dstImage" value="<%=path %>">
 				<table>
-					<tr><td><img src = "<%= path %>" width = "100"></td>
-					<td><textarea rows ="3"cols ="40" maxlength = "280"required placeholder="コメントを入力" name="text"></textarea>
+					<tr><td><img src = "<%= path %>" width = "300"></td>
+					<td><textarea rows ="15"cols ="40" maxlength = "280"required placeholder="コメントを入力" name="text"></textarea>
 				</table>
+				<br>
+				<br>
 				<input type = submit value ="投稿">
+				<br><br><br>
 			</form>
 		</div>
 	</body>

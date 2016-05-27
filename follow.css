@@ -6,6 +6,7 @@ body {
 	padding: 0;
 	background: #C0DEED;
 	color: #333333;
+	font-size: 80%;
 	font-family: Verdana;
 }
 
@@ -17,7 +18,6 @@ div#wrapper {
 
 div.my-profile{
 	margin-bottom:20px;
-	font-size:80%;
 }
 
 div.content{
@@ -88,7 +88,10 @@ p {
     padding-left: 10px;
 }
 
+table {
+	 margin: 0 auto;
 
+}
 
 table.follow{
 	margin:0 auto;
