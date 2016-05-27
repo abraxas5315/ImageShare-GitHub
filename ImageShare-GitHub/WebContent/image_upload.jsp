@@ -2,18 +2,21 @@
     pageEncoding="Windows-31J"%>
 <%@ page import="imageProcess.*" %>
 <%@ page import="servlet.ImageServlet" %>
-<%String size =(String)session.getAttribute("size"); %>
+<%String sizeString =(String)request.getAttribute("size");
+	//int size = Integer.parseInt(sizeString);
+%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="Windows-31J">
-		<title>投稿</title>
 		<link rel="stylesheet" href="personal.css" type="text/css">
+		<title>投稿</title>
+
 	</head>
 	<body>
-	<jsp:include page="header.jsp"/>
-		<div align="center">
-			<%if(size != null){ %>
+		<jsp:include page="header.jsp"/>
+		<div align="center" id="wrapper">
+			<%if(sizeString != null){ %>
 				 <font color="red">ファイルサイズを2MBまでにしてください。
 				</font>
 			<%} %>

@@ -16,7 +16,7 @@
 	</head>
 	<body>
 	<jsp:include page="header.jsp"/>
-		<div align="center">
+		<div align="center" id="wrapper">
 			<form action="post" method="post">
 				<input type="hidden" name="dstImage" value="<%=path %>">
 				<table>
