@@ -46,7 +46,7 @@ String formatDate = "";
 <div id="wrapper">
 
 		<div class="new">
-			<a href="javascript:location.reload();" id="new" class="button">ÅVî•ñ‚ğæ“¾‚·‚é</a>
+			<a href="TL" id="new" class="button">ÅVî•ñ‚ğæ“¾‚·‚é</a>
 		</div>
 
 		<%for(int i=0; i<timeLine.size(); i++){
