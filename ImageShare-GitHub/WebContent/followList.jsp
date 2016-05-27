@@ -1,3 +1,4 @@
+<%@page import="data.PersonalData"%>
 <%@page import="org.apache.catalina.startup.SetAllPropertiesRule"%>
 <%@ page language="java" contentType="text/html; charset=Windows-31J"
     pageEncoding="Windows-31J"%>
@@ -16,24 +17,34 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 
 	<head>
 	<meta http-equiv="Content-Type" name="author" content="N.Tsukazawa text/html; charset=Windows-31J">
-	<link rel="stylesheet" href="follow.css" type="text/css">
+	<link rel="stylesheet" href="personal.css" type="text/css">
 		<title>フォロー一覧</title>
 	</head>
 
 	<body>
 	<div align="center">
-			<jsp:include page="header.jsp"/>
+		<jsp:include page="header.jsp"/>
 
-			<h1>フォロー</h1>
-	</div>
+		<h1>フォロー</h1></div>
 
-				<table class="follow">
+		<table class="follow">
+			<%if(follow.size() == 0) {%>
+				<div align ="center"><h2>フォローしている人はいません</h2></div>
+			<%}else{ %>
 				<%// フォローしている人のリストを表示する
 				for(Member mem : follow){%>
 				<tr>	<td><div class="icon"><img border="0" src="<%=mem.getIcon() %>" width="80" height="80" alt="イラスト1"></div></td>
-						<td><a href="personal"><%=mem.getName() %> <%=mem.getAccountId() %></a><br><%=mem.getProfile() %></td>
-						</tr><%} %>
+						<td><form action="personal" method="post">
+							<input type="submit" name="名前" value="<%=mem.getName() %><%=mem.getAccountId() %>">
+							<input type="hidden" name="otherId" value="<%=mem.getAccountId() %>"></form>
+							<br><%=mem.getProfile() %></td>
 
-				</table>
+				</tr><%}} %>
+		</table>
+
+
+
+
+
 	</body>
 </html>

@@ -26,10 +26,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
-import data.Member;
 
 
 /**
@@ -56,7 +53,7 @@ public class ImageServlet extends MainServlet {
 		// TODO Auto-generated method stub
 		ImageFileStorage storage = new ImageFileStorage();
 		//セッションの取得
-	    HttpSession session = request.getSession();
+	    //HttpSession session = request.getSession();
 //		try
 //		{
 			File imgFile = null;
@@ -66,10 +63,13 @@ public class ImageServlet extends MainServlet {
 			// ファイルサイズの取得
 			long size = p.getSize();
 			System.out.println("size: " + size);
-			if(size >= 20000000){
-				request.setAttribute("size", size);
-				RequestDispatcher rd = request.getRequestDispatcher("image_upload.jsp");
-				rd.forward(request, response);
+			String url ="post.jsp";
+			if(size >=  2000000){
+				String s = String.valueOf(size);
+				request.setAttribute("size", s);
+				url = "image_upload.jsp";
+			} else{
+				url = "post.jsp";
 			}
 
 			System.out.println(clipUploadFileName(p));
@@ -107,10 +107,9 @@ public class ImageServlet extends MainServlet {
 			image = editor(request, "filter", editors2, image);
 
 			//ファイルパスの作成と保存
-			Member member = (Member)session.getAttribute("member");
-			String id = member.getAccountId();
-			//デバッグ用
-			//String id = "aaaa";
+			//Member member = (Member)session.getAttribute("member");
+			//String id = member.getAccountId();
+			String id = "aaaa";
 			imgFile = storage.store(getServletContext(), cType, image,id);
 
 			//リクエストに画像情報保存
@@ -120,7 +119,7 @@ public class ImageServlet extends MainServlet {
 			request.setAttribute("path", path);
 
 			//post.jspに委譲
-			RequestDispatcher rd = request.getRequestDispatcher("post.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
 	}
 	private BufferedImage editor
