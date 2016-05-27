@@ -1,7 +1,5 @@
 @CHARSET "Windows-31J";
 
-/* default setting
-------------------------------------------- */
 h1,h2,h3,h4.h5,h6,p,ul,li,dl,dt,dd,ol,blockquote {
 	margin: 0;
 	padding: 0;
@@ -17,7 +15,6 @@ body {
 	padding: 0;
 	background: #C0DEED;
 	color: #333333;
-	font-size: 80%;
 	font-family: Verdana;
 }
 
@@ -29,6 +26,7 @@ div#wrapper {
 
 div.my-profile{
 	margin-bottom:20px;
+	font-size:80%;
 }
 
 div.content{
@@ -99,10 +97,7 @@ p {
     padding-left: 10px;
 }
 
-table {
-	 margin: 0 auto;
 
-}
 
 
 .button {

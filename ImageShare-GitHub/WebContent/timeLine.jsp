@@ -16,32 +16,43 @@ String formatDate = "";
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
-<link rel="stylesheet" href="personal.css" type="text/css">
+<link rel="stylesheet" href="timeline.css" type="text/css">
 <title>タイムライン</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 
-	<div id="wrapper">
-		<div class="my-profile">
-			<table class="user">
-				<tr>
-					<!-- <th> <img border="0" src="<%=member.getIcon()%>" width="128" height="128" alt="イラスト1"> </th>   -->
-					<th> <img border="0" src="images/Desert.jpg" width="128" height="128" alt="イラスト1"> </th>
-					<th> <%=member.getName() %> </th>
-					<th> <%=member.getAccountId() %> </th>
-				</tr>
-			</table>
-			<p> <%=member.getProfile() %></p>
+
+		<div class="my-info">
+			<div class="user">
+				<div class="icon">
+				<img src="<%=member.getIcon()%>" width="100" alt="イラスト1">
+				</div>
+				<div class="my-name">
+					<p class="name-style"> ニックネーム </p>
+					<p> <%=member.getName() %> </p>
+					<p class="name-style"> 名前 </p>
+					<p> <%=member.getAccountId() %> </p>
+				</div>
+			</div>
+
+			<div class="my-profile">
+				<%=member.getProfile() %>
+			</div>
 		</div>
 
 
 
+<div id="wrapper">
 
+		<div class="new">
+			<a href="javascript:location.reload();" id="new" class="button">最新情報を取得する</a>
+		</div>
 
 		<%for(int i=0; i<timeLine.size(); i++){
 		Article la = timeLine.get(i);
 		%>
+		<hr>
 
 			<div class="content">
 
@@ -59,10 +70,10 @@ String formatDate = "";
 								ID <%=la.getAccountId() %>
 							</strong>
 
-<form action="personal" method="post">
-<p>○○<input type="submit" name="名前" value="個人ページへ"></p>
-<p>○○<input type=”hidden” name="otherId" value="<%=la.getAccountId()%>"></p>
-</form>
+							<form action="personal" method="post">
+								<input type="submit" name="名前" value="個人ページへ">
+								<input class="hidden" type=”hidden” name="otherId" value="<%=la.getAccountId()%>">
+							</form>
 
 
 					</div>
@@ -87,7 +98,7 @@ String formatDate = "";
 				</div>
 			</div>
 
-			<hr>
+
 
 		<%
 		}
