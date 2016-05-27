@@ -34,9 +34,9 @@
 							</select></th>
 						<th><input type = "radio" name="base" value="<%=MonochromeEffect.FILTER_VALUE%>">
 						<select name="<%= MonochromeEffect.PARAM_NAME_COLOR_CONCOLOR  %>">
-								<option value="<%= MonochromeEffect.GRAY_SCALE%>">グレー</option>
-								<option value="<%=MonochromeEffect.REDDING%>">レッド</option>
-								<option value="<%=MonochromeEffect.BLUING%>">ブルー</option>
+								<option value="<%= MonochromeEffect.GRAY_SCALE.color()%>">グレー</option>
+								<option value="<%=MonochromeEffect.REDDING.color()%>">レッド</option>
+								<option value="<%=MonochromeEffect.BLUING.color()%>">ブルー</option>
 							</select></th></tr>
 					</table>
 					<span>詳細フィルター
