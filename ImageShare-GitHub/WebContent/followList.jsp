@@ -22,10 +22,9 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 	</head>
 
 	<body>
-	<div align="center">
 		<jsp:include page="header.jsp"/>
 
-		<h1>フォロー</h1></div>
+	<div align="center"><h1>フォロー</h1></div>
 
 		<table class="follow">
 			<%if(follow.size() == 0) {%>
@@ -34,12 +33,8 @@ ArrayList<Member> follow = (ArrayList<Member>) request.getAttribute("follow");%>
 				<%// フォローしている人のリストを表示する
 				for(Member mem : follow){%>
 				<tr>	<td><div class="icon"><img border="0" src="<%=mem.getIcon() %>" width="80" height="80" alt="イラスト1"></div></td>
-						<td>
-<!-- 						<form name="f22" action="personal" method="get"> -->
-<%--         <input type="hidden" name="act" value="<%=mem.getAccountId() %>"> --%>
-<%--         <a href="personal" value="<%=mem.getAccountId() %>"> <%=mem.getName() %> : <%=mem.getAccountId() %></a> --%>
-					<td><form action="personal" method="post">
-							<input class="name" type="submit" name="名前" value="<%=mem.getName() %><%=mem.getAccountId() %>">
+						<td><form action="personal" method="post">
+							<input class="name" type="submit" name="名前" value="<%=mem.getName() %> : <%=mem.getAccountId() %>">
 							<input type="hidden" name="otherId" value="<%=mem.getAccountId() %>"></form>
 							<br><%=mem.getProfile() %></td>
 						</tr><%}} %>

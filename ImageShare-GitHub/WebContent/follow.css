@@ -87,10 +87,7 @@ p {
     padding-left: 10px;
 }
 
-table {
-	 margin: 0 auto;
 
-}
 
 table.follow{
 	margin:0 auto;
@@ -117,17 +114,21 @@ table.follow{
 	background: #e6e6e6 ;
 }
 
-input.name {
-	color: blue ;
-	display: black ;
+input.name:hover{
+	color: #1b95e0 ;
 	text-decoration:underline;
+
+}
+
+input.name {
+	color: black ;
 	background: none ;
 	text-align: center ;
-	padding: 8px ;
+	padding: 1px ;
 	font-size: 1rem ;
 	font-weight: 700 ;
 	border: none;
-	width: 100% ;
+	width: 50% ;
 	box-sizing: border-box ;
 	outline: none;
 	cursor: pointer;
