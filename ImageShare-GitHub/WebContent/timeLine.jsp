@@ -29,7 +29,7 @@ String formatDate = "";
 		<div class="my-info">
 			<div class="user">
 				<div class="icon">
-				<img src="<%=member.getIcon()%>" width="100" alt="イラスト1">
+					<img src="<%=member.getIcon()%>" width="100" alt="イラスト1">
 				</div>
 				<div class="my-name">
 					<p class="name-style"> ニックネーム </p>

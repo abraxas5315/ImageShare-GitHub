@@ -27,20 +27,28 @@ String formatDate = "";
 
 	<div id="wrapper">
 		<div class="my-profile">
-			<table class="user">
-				<tr>
-					<!-- <th> <img border="0" src="<%=member.getIcon()%>" width="128" height="128" alt="イラスト1"> </th>   -->
-					<th> <img border="0" src="images/Desert.jpg" width="128" height="128" alt="イラスト1"> </th>
-					<th> <%=member.getName() %> </th>
-					<th> <%=member.getAccountId() %> </th>
-				</tr>
-			</table>
+			<div class="user">
+					<div class="my-icon">
+						<img src="<%=member.getIcon()%>" width="150" alt="イラスト1">
+					</div>
+					<div class="my-name">
+						<%=member.getName() %>
+					</div>
+					<div class="my-id">
+						<%=member.getAccountId() %>
+					</div>
+
+			</div>
 
 			<table class="follow">
 				<tr>
 					<th> フォロー数 <%=personal.getFollows() %> </th>
-					<th> <form action="ShowFollowServlet" method="POST">
-					<input type="submit" value="フォロー一覧"> </form></th>
+					<th>
+						<form action="ShowFollowServlet" method="POST">
+							<input type="submit" value="フォロー一覧">
+							<input type="hidden" name="otherId" value="<%=member.getAccountId()%>">
+						</form>
+					</th>
 					<th> フォロワー数 <%=personal.getFollowers() %> </th>
 					<th> 投稿数 <%=personal.getArticles() %> </th>
 				</tr>
@@ -62,7 +70,7 @@ String formatDate = "";
 
 				<div class="message">
 					<div class="icon">
-						<img border="0" src="images/Desert.jpg" width="80" height="80" alt="イラスト1">
+						<img src="<%=la.getMember().getIcon() %>" width="80" height="80" alt="イラスト1">
 					</div>
 
 					<div class="account">
@@ -72,7 +80,7 @@ String formatDate = "";
 						</span>
 
 						<strong class="user-id">
-							ID <%=la.getAccountId() %>
+							ID: <%=la.getAccountId() %>
 						</strong>
 
 					</div>
