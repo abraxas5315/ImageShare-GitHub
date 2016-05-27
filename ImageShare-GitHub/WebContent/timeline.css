@@ -1,0 +1,151 @@
+@CHARSET "Windows-31J";
+
+h1,h2,h3,h4.h5,h6,p,ul,li,dl,dt,dd,ol,blockquote {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	font-weight: normal;
+	line-height: 1.0;
+	list-style: none;
+}
+
+
+body {
+	margin: 0 auto;
+	padding: 0;
+	background: #C0DEED;
+	color: #333333;
+	font-family: Verdana;
+}
+
+
+div.my-info{
+	position:absolute;
+	top:50px;
+	margin-bottom:20px;
+	margin-left:40px;
+	background: white;
+	width:300px;
+	height: 250px;
+	border: solid 1px #D8D8D8;
+	border-radius: 20px ;
+	float: left;
+
+}
+
+p.name-style{
+	padding:7px;
+}
+
+div.user{
+	height:80px;
+	font-size:80%;
+}
+
+div.my-profile{
+	margin:10px;
+	font-size:80%;
+
+}
+
+div.new{
+	margin:10px;
+}
+
+div#wrapper {
+	float: left;
+    width: 800px;
+    margin: 0 auto;
+    background: white;
+    position:absolute;
+	top: 50px;
+    left: 400px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+
+
+div.content{
+	padding-top: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom:10px;
+
+}
+
+div.message{
+	border:1px solid #FF0000;
+	margin-bottom: 20px;
+}
+
+div.account{
+	padding-bottom:3px;
+}
+
+div.icon{
+	padding-left: 4px;
+    padding-right: 20px;
+    padding-top: 5px;
+    float: left;
+}
+
+.icon img {
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+    border-radius:10px;
+}
+
+a.link{
+	margin-top:20px;
+}
+
+.hidden{
+	display:none;
+}
+
+div.comment{
+	position: relative;
+	width:100%;
+	min-height:70px;
+
+}
+
+div.my-image{
+	padding-left:30px;
+	padding-right:30px;
+}
+
+.my-image img{
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+    border-radius:10px;
+}
+
+div.date{
+	position: absolute;
+	bottom: 4px;
+	right:4px;
+}
+
+
+
+.button {
+	color: #333 ;
+	display: block ;
+	background: #f2f2f2 ;
+	text-align: center ;
+	padding: 8px ;
+	font-size: 1rem ;
+	font-weight: 700 ;
+	border: 1px solid #e6e6e6 ;
+	width: 100% ;
+	box-sizing: border-box ;
+}
+
+.button:hover {
+	cursor: pointer ;
+	background: #e6e6e6 ;
+}
+
+
